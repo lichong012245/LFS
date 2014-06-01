@@ -1,0 +1,85 @@
+<script src="static/js/jquery.jcarousel.js" type="text/javascript"/></script>
+<script src="static/js/carousel.js" type="text/javascript"/></script>
+<link href="static/css/carousel.css" type="text/css" rel="stylesheet">
+
+<style>
+#main-carousel {
+  width: {{ width }}px;
+  min-height: {{ height }}px;
+  overflow: hidden;
+  position: relative;
+}
+.carousel-wrapper {
+  height: {{ height }}px;
+  position: inherit;
+  white-space: nowrap;
+  float: left;
+}
+.inner-box {
+  width: {{ width }}px;
+}
+.text-box {
+  width: {{ text_box_width }}px;
+  left: 20px;
+  bottom: 20px;
+  position: absolute;
+  padding: 10px 20px;
+  opacity: .9;
+  color: white;
+  white-space: normal;
+  font: bold 22px/30px 'PT Sans Caption';
+}
+.carousel-navigation {
+  width: {{ text_box_width }}px;
+  text-align: right;
+  position: absolute;
+}
+
+{% for entry in carousel.carousel_entries.all %}
+   img.{{ entry.carousel_entry_id }} {
+    width: {{ width }}px;
+    height: {{ height }}px;
+  }
+
+  #{{ entry.carousel_entry_id }} .text-box {
+    background-color: {{ entry.text_background_color }};
+  }
+{% endfor %}
+</style>
+
+<section id="main-carousel">
+  <div class="carousel-wrapper">
+    {% for entry in carousel.carousel_entries.all  %}
+      <div class="inner-box {% if forloop.counter == 1 %}active{% endif %}" id="{{ entry.carousel_entry_id }}">
+        <div><img class="{{ entry.carousel_entry_id }}" src="{{ entry.cropped_img_url }}"></div>
+        <div class="text-box">
+          {{ entry.text_over_image_translated }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if navigation %}
+  <div class="carousel-navigation">
+    <ul>
+      {% for entry in carousel.carousel_entries.all %}
+      <li>
+        <a href="#{{ entry.carousel_entry_id }}"></a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+</section>
+
+{% if menu_entries %}
+<div class="carousel-menu">
+  <ul>
+    {% for entry in carousel.carousel_entries.all %}
+    <li>
+      <a href="#{{ entry.carousel_entry_id }}" {% if forloop.counter == 1 %}class="activate"{% endif %}>{{ entry.navigation_entry_translated }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}

@@ -1,0 +1,52 @@
+.carousel-menu li {
+  padding: 10px 20px 20px;
+  display: inline-block;
+}
+.carousel-menu a {
+  font: bold 18px/24px 'PT Sans Caption';
+  border-bottom: 1px dotted #adc6e0;
+  color: #0066CC;
+}
+.carousel-menu a.active {
+  content: ' ';
+  height: 0;
+  position: 0;
+  color: #333;
+  border-bottom-color: transparent;
+}
+.carousel-menu ul li a.active{
+  position: relative;
+  list-style-position: outside;
+  list-style-type: none;
+}
+.carousel-menu ul li a.active:before {
+  content: ' ';
+  height: 0;
+  position: absolute;
+  width: 0;
+
+  border: 8px solid transparent;
+  border-bottom-color: #fff;
+  bottom: 100%;
+  left: 50%;
+  margin-bottom: 10px;
+  margin-left: -10px;
+}
+.carousel-navigation li {
+  padding-left: 13px;
+  display: inline-block;
+}
+.carousel-navigation li a {
+  height: 13px;
+  width: 13px;
+  background: url('../img/bullet.png') no-repeat;
+  position: absolute;
+}
+.carousel-navigation li a.active {
+  height: 13px;
+  width: 13px;
+  color: #333;
+  border-bottom-color: transparent;
+  background: url('../img/bullet-active.png') no-repeat;
+  position: absolute;
+}

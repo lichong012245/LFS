@@ -1,0 +1,245 @@
+{% load i18n %}
+{% load lfs_tags %}
+{% load lfs_theme_tags %}
+{% load lfs_portlets_tags %}
+{% load compress %}
+{% load carousel %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gird System Test</title>
+    
+    <!-- Bootstrap -->
+    
+    <link href="{{ STATIC_URL }}momo/css/offset-nav.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}momo/css/main.css" rel="stylesheet">
+    
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--[if IE 8]><link href="{{ STATIC_URL }}momo/css/ie8-fix.css" rel="stylesheet"><![endif]-->
+
+	
+</head>
+<body>
+	<div class="wrap fixed-width-by-lg">
+	
+		<div class="container mod-header navbar navbar-fixed-top">
+			<div class="navigation">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".navbar-offcanvas" data-canvas="body">
+						<i class="fa fa-bars fa-2x fa-fw"></i>
+					</button>
+					<a class="navbar-brand" href="{{ STATIC_URL }}momo/#"><img class="img-responsive" src="{{ STATIC_URL }}momo/images/global/logo_momo.png" /></a>
+				</div>
+				<div class="navbar-offcanvas offcanvas">
+					<a class="navmenu-brand" href="{{ STATIC_URL }}momo/#"><img class="img-responsive" src="{{ STATIC_URL }}momo/images/global/logo_momo.png" /></a>
+					<ul class="nav navbar-nav">
+						{% block tabs %}
+                          {% tabs %}
+                        {% endblock %}
+					</ul> <!-- // navbar-nav -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search">
+                         <span class="input-group-btn">
+                         		<button type="submit" class="btn btn-default" type="button"><i class="fa fa-search fa-fw fa-lg"></i></button>
+                         </span>
+						</div>
+					</form>
+				</div><!--// nav-collapse -->
+			</div>
+		</div>
+    
+        <div class="container top-hero">
+             <div class="col-xl-12 col-xs-12 pal">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+                
+                    <div class="carousel-inner">
+                       <div class="item active">
+                        		<a class="wrap-banner" href="{{ STATIC_URL }}momo/#">
+                                <div class="paxl"><div class="pa2xl"></div></div>
+                                <img class="img-responsive hidden-xs" src="{{ STATIC_URL }}momo/images/hero/hero_1.jpg" /> <!-- hero banner for desktop version -->
+                                <img class="img-responsive visible-xs hidden-ie8-fix" src="{{ STATIC_URL }}momo/images/hero/hero_1_m.jpg" /> <!-- hero banner for movile version -->
+                            </a>
+                      </div>
+						<div class="item">
+                        		<a class="wrap-banner" href="{{ STATIC_URL }}momo/#">
+                                <div class="paxl"><div class="pa2xl"></div></div>
+                                <img class="img-responsive hidden-xs" src="{{ STATIC_URL }}momo/images/hero/hero_2.jpg" />
+                                <img class="img-responsive visible-xs hidden-ie8-fix" src="{{ STATIC_URL }}momo/images/hero/hero_2_m.jpg" />
+                            </a>
+                      </div>
+						<div class="item">
+                        		<a class="wrap-banner" href="{{ STATIC_URL }}momo/#">
+                                <div class="paxl"><div class="pa2xl"></div></div>
+                                <img class="img-responsive hidden-xs" src="{{ STATIC_URL }}momo/images/hero/hero_3.jpg" />
+                                <img class="img-responsive visible-xs hidden-ie8-fix" src="{{ STATIC_URL }}momo/images/hero/hero_3_m.jpg" />
+                            </a>
+                      </div>
+                    </div>
+                
+                    <a class="left carousel-control" href="{{ STATIC_URL }}momo/#myCarousel" data-slide="prev">
+                        <span><i class="fa fa-angle-left fa-2x"></i></span>
+                    </a>
+                    <a class="right carousel-control" href="{{ STATIC_URL }}momo/#myCarousel" data-slide="next">
+                        <span><i class="fa fa-angle-right fa-2x"></i></span>
+                    </a>
+                </div>
+            </div>
+        </div> <!-- // container / carousel section -->
+        
+        <div class="container">
+        	<div class="col-xl-6 col-sm-6 col-xs-12 pal">
+                <a class="wrap-banner" href="{{ STATIC_URL }}momo/#">
+                    <div class="paxl"><div class="pa2xl"></div></div>
+                    <img class="img-responsive" src="{{ STATIC_URL }}momo/images/ad/ad_1.jpg" />
+                </a>
+            </div>
+            <div class="col-xl-6 col-sm-6 col-xs-12 pal">
+                <a class="wrap-banner" href="{{ STATIC_URL }}momo/#">
+                    <div class="paxl"><div class="pa2xl"></div></div>
+                    <img class="img-responsive" src="{{ STATIC_URL }}momo/images/ad/ad_2.jpg" />
+                </a>
+            </div>
+        </div> <!-- // container / about section -->
+		
+		 <div class="clearfix mt4xl hidden-sm hidden-xs"></div>
+		 <div class="clearfix mt2xl visible-sm"></div>
+        <div class="clearfix mtxl visible-xs"></div>
+		
+        <div class="container">
+        	<div class="col-xl-12 col-xs-12 pal">
+           	<h3 class="col-xl-8 col-xs-8 capital ptl">MO-MO Best</h3>
+            	<div class="col-xl-4 col-xs-4"><a class="btn btn-default pull-right">View All Best</a></div>
+           </div>
+		   
+			<div class="col-xl-3 col-md-3 col-sm-4 col-xs-6 pal">
+			  <a class="wrap-product" href="{{ STATIC_URL }}momo/#">
+						<div class="paxl"><div class="pa2xl"></div></div>
+						<img class="img-responsive" src="{{ STATIC_URL }}momo/images/product/product_pic_1.jpg" />
+						<p class="product-name pal plxl prxl mtxl">MARC BY MARC JACOBS Jacket<br /> Matelasse Long</p>
+						<!-- <p class="price-before-sale small pal">USD 30.00</p> --><!-- if the item is none saled, just take out this tag -->
+						<p class="price pal pb2xl">USD 20.99</p>
+				</a>
+			</div>
+			<div class="col-xl-3 col-md-3 col-sm-4 col-xs-6 pal">
+			  <a class="wrap-product" href="{{ STATIC_URL }}momo/#">
+						<div class="paxl"><div class="pa2xl"></div></div>
+						<img class="img-responsive" src="{{ STATIC_URL }}momo/images/product/product_pic_2.jpg" />
+						<p class="product-name pal plxl prxl mtxl">Three Quarter Sleeve Bubble Top Stretch Sweater</p>
+						<p class="price pal pb2xl">USD 20.99</p>
+				</a>
+			</div>
+			<div class="col-xl-3 col-md-3 col-sm-4 col-xs-6 pal">
+			  <a class="wrap-product" href="{{ STATIC_URL }}momo/#">
+						<div class="paxl"><div class="pa2xl"></div></div>
+						<img class="img-responsive" src="{{ STATIC_URL }}momo/images/product/product_pic_3.jpg" />
+						<p class="product-name pal plxl prxl mtxl">FRENCH CONNECTION Skirt<br /> Sparkle Sunflower</p>
+						<p class="price pal pb2xl">USD 20.99</p>
+				</a>
+			</div>
+			<div class="col-xl-3 col-md-3 col-sm-4 col-xs-6 pal hidden-sm">
+			  <a class="wrap-product" href="{{ STATIC_URL }}momo/#">
+						<div class="paxl"><div class="pa2xl"></div></div>
+						<img class="img-responsive" src="{{ STATIC_URL }}momo/images/product/product_pic_4.jpg" />
+						<p class="product-name pal plxl prxl mtxl">DIANE von FURSTENBERG Skirt<br /> Samara Structured Fit and Flare</p>
+						<p class="price pal pb2xl">USD 20.99</p>
+				</a>
+			</div>
+            
+        </div> <!-- // container / 4 columed product list-->
+		
+		<div class="clearfix mt4xl hidden-sm hidden-xs"></div>
+		 <div class="clearfix mt2xl visible-sm"></div>
+        <div class="clearfix mtxl visible-xs"></div>
+		
+        <div class="container">
+        	<div class="col-xl-12 col-xs-12 pal">
+           	<h3 class="col-xl-8 col-xs-8 capital ptl">Saled Items</h3>
+            	<div class="col-xl-4 col-xs-4"><a class="btn btn-default pull-right">View All Sale</a></div>
+           </div>
+		   
+			<div class="col-xl-3 col-md-3 col-sm-4 col-xs-6 pal">
+			  <a class="wrap-product" href="{{ STATIC_URL }}momo/#">
+						<div class="paxl"><div class="pa2xl"></div></div>
+						<img class="img-responsive" src="{{ STATIC_URL }}momo/images/product/product_pic_1.jpg" />
+						<p class="product-name pal plxl prxl mtxl">MARC BY MARC JACOBS Jacket<br /> Matelasse Long</p>
+						<p class="price-before-sale small pal">USD 30.00</p>
+						<p class="price pal pb2xl">USD 20.99</p>
+				</a>
+			</div>
+			<div class="col-xl-3 col-md-3 col-sm-4 col-xs-6 pal">
+			  <a class="wrap-product" href="{{ STATIC_URL }}momo/#">
+						<div class="paxl"><div class="pa2xl"></div></div>
+						<img class="img-responsive" src="{{ STATIC_URL }}momo/images/product/product_pic_2.jpg" />
+						<p class="product-name pal plxl prxl mtxl">Three Quarter Sleeve Bubble Top Stretch Sweater</p>
+						<p class="price-before-sale small pal">USD 30.00</p>
+						<p class="price pal pb2xl">USD 20.99</p>
+				</a>
+			</div>
+			<div class="col-xl-3 col-md-3 col-sm-4 col-xs-6 pal">
+			  <a class="wrap-product" href="{{ STATIC_URL }}momo/#">
+						<div class="paxl"><div class="pa2xl"></div></div>
+						<img class="img-responsive" src="{{ STATIC_URL }}momo/images/product/product_pic_3.jpg" />
+						<p class="product-name pal plxl prxl mtxl">FRENCH CONNECTION Skirt<br /> Sparkle Sunflower</p>
+						<p class="price-before-sale small pal">USD 30.00</p>
+						<p class="price pal pb2xl">USD 20.99</p>
+				</a>
+			</div>
+			<div class="col-xl-3 col-md-3 col-sm-4 col-xs-6 pal hidden-sm">
+			  <a class="wrap-product" href="{{ STATIC_URL }}momo/#">
+						<div class="paxl"><div class="pa2xl"></div></div>
+						<img class="img-responsive" src="{{ STATIC_URL }}momo/images/product/product_pic_4.jpg" />
+						<p class="product-name pal plxl prxl mtxl">DIANE von FURSTENBERG Skirt<br /> Samara Structured Fit and Flare</p>
+						<p class="price-before-sale small pal">USD 30.00</p>
+						<p class="price pal pb2xl">USD 20.99</p>
+				</a>
+			</div>
+            
+        </div> <!-- // container / 4 columed product list-->
+        
+        <div class="clearfix pt14xl"></div>
+	</div> <!-- // wrap -->
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script type="text/javascript" src="{{ STATIC_URL }}momo/javascripts/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}momo/javascripts/jquery-migrate-1.2.1.min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}momo/javascripts/bootstrap.min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}momo/javascripts/offset-canvas.js"></script>
+        <script type="text/javascript">
+        $(function () {
+             $('#myCarousel').carousel();
+        })
+        </script>
+        <script type="text/javascript">
+			$(document).ready(function(){
+				var topHeight = $('.navigation').outerHeight();
+				var scrollTopHeight = topHeight / 2 - 38;
+				
+				$(window).scroll(function(){
+					if ($(window).scrollTop() > scrollTopHeight){
+						$('.navigation').addClass('mod-header-fixed');
+						$( '.top-hero' ).css( 'padding-top', topHeight );
+					} else if ($(window).scrollTop() < scrollTopHeight) {
+						$('.navigation').removeClass('mod-header-fixed');
+						$( '.top-hero' ).css( 'padding-top', 0 );
+					}
+				});
+			});
+		</script>
+    </body>
+</html>

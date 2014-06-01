@@ -73,11 +73,19 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
-# List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.load_template_source',
-    'django.template.loaders.app_directories.load_template_source',
-#     'django.template.loaders.eggs.load_template_source',
+# Django 1.3.1
+# # List of callables that know how to import templates from various sources.
+# TEMPLATE_LOADERS = (
+#     'django.template.loaders.filesystem.load_template_source',
+#     'django.template.loaders.app_directories.load_template_source',
+# #     'django.template.loaders.eggs.load_template_source',
+# )
+
+# Django 1.4.5
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -98,6 +106,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    "mytheme",
     "lfstheme",
     "compressor",
     "django.contrib.admin",
@@ -149,15 +158,32 @@ INSTALLED_APPS = (
     'postal',
     'paypal.standard.ipn',
     'paypal.standard.pdt',
+    'south',
+    'hvad',
+    'paintstore',
+    'image_cropping',
+    'easy_thumbnails',
+    'django_carousel',
 )
 
 FORCE_SCRIPT_NAME=""
 LOGIN_URL = "/login/"
 LOGIN_REDIRECT_URL = "/manage/"
 
+# Django 1.3.1
+# TEMPLATE_CONTEXT_PROCESSORS = (
+#     'django.core.context_processors.debug',
+#     'django.core.context_processors.auth',
+#     'django.core.context_processors.request',
+#     'django.core.context_processors.media',
+#     'django.core.context_processors.static',
+#     'lfs.core.context_processors.main',
+# )
+
+# Django 1.4.5
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.debug',
-    'django.core.context_processors.auth',
+    'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.request',
     'django.core.context_processors.media',
     'django.core.context_processors.static',
@@ -261,6 +287,18 @@ REVIEWS_SHOW_PREVIEW = False
 REVIEWS_IS_NAME_REQUIRED = False
 REVIEWS_IS_EMAIL_REQUIRED = False
 REVIEWS_IS_MODERATED = False
+
+# Django-carousel
+
+SOUTH_MIGRATION_MODULES = {
+        'easy_thumbnails': 'easy_thumbnails.south_migrations',
+    }
+
+from easy_thumbnails.conf import Settings as thumbnail_settings
+THUMBNAIL_PROCESSORS = (
+    'image_cropping.thumbnail_processors.crop_corners',
+) + thumbnail_settings.THUMBNAIL_PROCESSORS
+
 
 try:
     from local_settings import *
