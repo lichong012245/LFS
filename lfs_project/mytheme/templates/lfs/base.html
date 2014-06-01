@@ -18,6 +18,14 @@
     
     <link href="{{ STATIC_URL }}momo/css/offset-nav.css" rel="stylesheet">
     <link href="{{ STATIC_URL }}momo/css/main.css" rel="stylesheet">
+
+      <!-- css (migrate from lfs base.html) -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}jquery/lightbox/jquery.lightbox-0.5.css" />
+            <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}jquery-ui-1.8.13.custom/css/smoothness/jquery-ui-1.8.13.custom.css" />
+            <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}jquery/jquery.jgrowl.css" />
+            <!--link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}yui/reset-fonts.css"-->
+            <!--link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}blueprint/src/grid.css"-->
+            <!--link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/main.css" /-->
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -89,9 +97,21 @@
                          </span>
 						</div>
 					</form>
+					<div id="breadcrumbs">
+            <div class="container">
+                {% block breadcrumbs %}{% endblock %}
+            </div>
+        </div>
 				</div><!--// nav-collapse -->
 			</div>
 		</div>
+		<div class="container livesearch-wrapper">
+                 <div id="livesearch-result"></div>
+            </div>
+        </div>
+
+        {% block carousel %}
+        {% endblock %}
     
         <div class="container top-hero">
              <div class="col-xl-12 col-xs-12 pal">
@@ -254,6 +274,17 @@
         <script type="text/javascript" src="{{ STATIC_URL }}momo/javascripts/jquery-migrate-1.2.1.min.js"></script>
         <script type="text/javascript" src="{{ STATIC_URL }}momo/javascripts/bootstrap.min.js"></script>
         <script type="text/javascript" src="{{ STATIC_URL }}momo/javascripts/offset-canvas.js"></script>
+
+        <!-- jQuery (migrate from lfs base.html) -->
+        <script type="text/javascript" src="{{ STATIC_URL }}jquery/jquery-1.7.2.min.js"></script>
+            <script type="text/javascript" src="{{ STATIC_URL }}jquery-ui-1.8.13.custom/js/jquery-ui-1.8.13.custom.min.js"></script>
+            <script type="text/javascript" src="{{ STATIC_URL }}jquery/jquery.form.pack.js"></script>
+            <script type="text/javascript" src="{{ STATIC_URL }}jquery/jquery.jgrowl_minimized.js"></script>
+            <script type="text/javascript" src="{{ STATIC_URL }}jquery/jquery.cookie.js"></script>
+            <script type="text/javascript" src="{{ STATIC_URL }}jquery/lightbox/jquery.lightbox-0.5.js"></script>
+            <script type="text/javascript" src="{{ STATIC_URL }}js/lfs.js"></script>
+
+
         <script type="text/javascript">
         $(function () {
              $('#myCarousel').carousel();

@@ -1,6 +1,6 @@
-*.db
+#*.db
 lfs.log
-local_settings.py
+#local_settings.py
 .installed.cfg
 *.pyc
 *.pyo
@@ -8,9 +8,9 @@ local_settings.py
 *develop-eggs/
 *.egg-info/
 *eggs/
-*parts/
+#*parts/
 *bin/
 *downloads/
-*sitestatic/
-*media/
+#*sitestatic/
+#*media/
 *build/
