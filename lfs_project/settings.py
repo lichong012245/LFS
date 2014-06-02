@@ -248,6 +248,9 @@ LFS_UNITS = [
     u"lfm",
     u"Package",
     u"Piece",
+    u"",
+    u"",
+    u"",
 ]
 
 LFS_PRICE_UNITS = LFS_BASE_PRICE_UNITS = LFS_PACKING_UNITS = LFS_UNITS
