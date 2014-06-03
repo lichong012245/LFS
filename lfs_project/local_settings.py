@@ -45,7 +45,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-    "mytheme",      
+    #"mytheme",      
     "compressor",
     "django.contrib.admin",
     'django.contrib.auth',
