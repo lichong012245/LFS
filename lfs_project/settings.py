@@ -67,11 +67,7 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '+0zsw5n@v7*rhl6r6ufqhoc6jlqq0f-u8c+gh(hjb+_jmg@rh6'
 
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
-)
+
 
 # Django 1.3.1
 # # List of callables that know how to import templates from various sources.
@@ -80,6 +76,11 @@ STATICFILES_FINDERS = (
 #     'django.template.loaders.app_directories.load_template_source',
 # #     'django.template.loaders.eggs.load_template_source',
 # )
+
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+)
 
 # Django 1.4.5
 STATICFILES_FINDERS = (
@@ -98,7 +99,7 @@ MIDDLEWARE_CLASSES = (
     "pagination.middleware.PaginationMiddleware",
 )
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'lfs_project.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
