@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 
 DIRNAME = os.path.dirname(__file__)
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 TESTING = False
 
@@ -51,8 +51,8 @@ USE_I18N = True
 MEDIA_ROOT = DIRNAME + "/media"
 
 # static files settings
-STATIC_URL = '/static/'
-STATIC_ROOT = DIRNAME + "/sitestatic"
+#STATIC_URL = '/static/'
+#STATIC_ROOT = DIRNAME + "/sitestatic"
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
