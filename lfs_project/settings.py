@@ -108,7 +108,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-    "mytheme",
+    #"mytheme",
     "lfstheme",
     "compressor",
     "django.contrib.admin",
