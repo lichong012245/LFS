@@ -79,7 +79,7 @@ SECRET_KEY = '+0zsw5n@v7*rhl6r6ufqhoc6jlqq0f-u8c+gh(hjb+_jmg@rh6'
 
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
+    'django.template.loaders.app_directories.Loader',    
 )
 
 # Django 1.4.5
@@ -108,7 +108,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-    "mytheme",
+    "lfs_project.mytheme",
     "lfstheme",
     "compressor",
     "django.contrib.admin",
@@ -165,7 +165,7 @@ INSTALLED_APPS = (
     'paintstore',
     'image_cropping',
     'easy_thumbnails',
-    'django_carousel',
+    'lfs_project.django_carousel',
 )
 
 FORCE_SCRIPT_NAME=""
