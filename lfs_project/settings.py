@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 
 DIRNAME = os.path.dirname(__file__)
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 TESTING = False
 
@@ -119,7 +119,7 @@ INSTALLED_APPS = (
     "django.contrib.flatpages",
     "django.contrib.redirects",
     "django.contrib.sitemaps",
-    'django_countries',
+    'django_countries',    
     "pagination",
     'reviews',
     "tagging",
@@ -291,6 +291,11 @@ REVIEWS_SHOW_PREVIEW = False
 REVIEWS_IS_NAME_REQUIRED = False
 REVIEWS_IS_EMAIL_REQUIRED = False
 REVIEWS_IS_MODERATED = False
+
+
+# Catelog Thumb Size setting
+
+THUMBNAIL_SIZES = ((60, 60), (100, 100), (200, 200), (300, 300), (400, 400),(500,500),(559,315))
 
 # Django-carousel
 
