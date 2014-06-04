@@ -20,7 +20,9 @@
     <link href="{{ STATIC_URL }}momo/css/main.css" rel="stylesheet">
 
       <!-- css (migrate from lfs base.html) -->
-           <!--link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}jquery/lightbox/jquery.lightbox-0.5.css" /-->
+           <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}jquery/lightbox/jquery.lightbox-0.5.css" />
+            <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}jquery-ui-1.8.13.custom/css/smoothness/jquery-ui-1.8.13.custom.css" />
+            <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}jquery/jquery.jgrowl.css" />
             <!--link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}jquery-ui-1.8.13.custom/css/smoothness/jquery-ui-1.8.13.custom.css" /-->
             <!--link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}jquery/jquery.jgrowl.css" /-->
             <!--link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}yui/reset-fonts.css"-->
@@ -32,6 +34,14 @@
         <script type="text/javascript" src="{{ STATIC_URL }}momo/javascripts/jquery-migrate-1.2.1.min.js"></script>
         <script type="text/javascript" src="{{ STATIC_URL }}momo/javascripts/bootstrap.min.js"></script>
         <script type="text/javascript" src="{{ STATIC_URL }}momo/javascripts/offset-canvas.js"></script>
+
+
+        <script type="text/javascript" src="{{ STATIC_URL }}jquery-ui-1.8.13.custom/js/jquery-ui-1.8.13.custom.min.js"></script>
+            <script type="text/javascript" src="{{ STATIC_URL }}jquery/jquery.form.pack.js"></script>
+            <script type="text/javascript" src="{{ STATIC_URL }}jquery/jquery.jgrowl_minimized.js"></script>
+            <script type="text/javascript" src="{{ STATIC_URL }}jquery/jquery.cookie.js"></script>
+            <script type="text/javascript" src="{{ STATIC_URL }}jquery/lightbox/jquery.lightbox-0.5.js"></script>
+            <script type="text/javascript" src="{{ STATIC_URL }}js/lfs.js"></script>
 
         
 
@@ -54,7 +64,8 @@
                         $( '.top-hero' ).css( 'padding-top', 0 );
                     }
                 });
-            });
+            });           
+
         </script>
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -156,10 +167,9 @@
                 </a>
             </div>
             <div class="col-xl-6 col-sm-6 col-xs-12 pal">
-                <a class="wrap-banner" href="{{ STATIC_URL }}momo/#">
-                    <div class="paxl"><div class="pa2xl"></div></div>
-                    <img class="img-responsive" src="{{ STATIC_URL }}momo/images/ad/ad_2.jpg" />
-                </a>
+               {% block onsale-slot %}
+			  {% lfs_portlet_slot 'onsale' %}
+			   {% endblock %}
             </div>
         </div> <!-- // container / about section -->
 		
@@ -172,6 +182,7 @@
 		  {% block left-slot %}
             {% lfs_portlet_slot 'Left' %}
           {% endblock %}
+
 			
             
         </div> <!-- // container / 4 columed product list-->
