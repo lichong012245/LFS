@@ -14,7 +14,7 @@ django-hvad==0.4.0
 django-image-cropping==0.8.2
 easy-thumbnails==2.0.1
 gunicorn==18.0
-#psycopg2==2.5.1
+psycopg2==2.5.1
 six==1.6.1
 static==0.4
 static3==0.5
