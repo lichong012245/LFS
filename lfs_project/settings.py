@@ -18,6 +18,10 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+# Catelog Thumb Size setting
+
+THUMBNAIL_SIZES = ((60, 60), (100, 100), (200, 200), (300, 300), (400, 400), (500, 500), (559, 315))
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
@@ -295,9 +299,7 @@ REVIEWS_IS_EMAIL_REQUIRED = False
 REVIEWS_IS_MODERATED = False
 
 
-# Catelog Thumb Size setting
 
-THUMBNAIL_SIZES = ((60, 60), (100, 100), (200, 200), (300, 300), (400, 400),(500,500),(559,315))
 
 # Django-carousel
 
@@ -338,9 +340,9 @@ if DEBUG:
     #STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     #AWS_S3_SECURE_URLS = False       # use http instead of https
     AWS_QUERYSTRING_AUTH = False     # don't add complex authentication-related query parameters for requests
-    #AWS_ACCESS_KEY_ID = 'AKIAI4BBJY73PAMLVMRQ'
-    #AWS_SECRET_ACCESS_KEY = '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'
-    AWS_STORAGE_BUCKET_NAME = 'zen-tec.momo'
+    AWS_ACCESS_KEY_ID = 'AKIAIZ4YY4P56IZH5WJA'
+    AWS_SECRET_ACCESS_KEY = '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'
+    AWS_STORAGE_BUCKET_NAME = 'zentec-momo'
     #S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
     #STATIC_URL = S3_URL    
     AWS_HEADERS = {
