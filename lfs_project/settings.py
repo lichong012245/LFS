@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 
 DIRNAME = os.path.dirname(__file__)
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 TESTING = False
 
@@ -166,6 +166,7 @@ INSTALLED_APPS = (
     'image_cropping',
     'easy_thumbnails',
     'lfs_project.django_carousel',
+    'storages',
 )
 
 FORCE_SCRIPT_NAME=""
@@ -329,6 +330,33 @@ STATIC_URL = '/static/'
 # STATICFILES_DIRS = (
 #     os.path.join(BASE_DIR, 'static'),
 # )
+
+
+## Amazon S3 Settings
+if not DEBUG:       
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    #STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    AWS_S3_SECURE_URLS = False       # use http instead of https
+    AWS_QUERYSTRING_AUTH = False     # don't add complex authentication-related query parameters for requests
+    AWS_ACCESS_KEY_ID = 'AKIAI4BBJY73PAMLVMRQ'
+    AWS_SECRET_ACCESS_KEY = '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'
+    AWS_STORAGE_BUCKET_NAME = 'zen-tec.momo'
+    #S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+   # STATIC_URL = S3_URL
+    AWS_QUERYSTRING_AUTH = False
+    AWS_HEADERS = {
+    'Expires': 'Thu, 15 Apr 2020 20:00:00 GMT',
+    'Cache-Control': 'max-age=86400',
+}
+
+## Django compressor for S3 Settings
+# if not DEBUG:
+#   COMPRESS_URL='http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+#   STATIC_URL=COMPRESS_URL
+#   COMPRESS_STORAGE='Storage.CachedS3BotoStorage'
+#   STATICFILES_STORAGE = COMPRESS_STORAGE
+#   COMPRESS_ROOT = STATIC_ROOT
+
 
 try:
     from local_settings import *
