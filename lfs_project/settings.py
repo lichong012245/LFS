@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 
 DIRNAME = os.path.dirname(__file__)
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 TESTING = False
 
@@ -324,7 +324,7 @@ ALLOWED_HOSTS = ['*']
 # Static asset configuration
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 # STATICFILES_DIRS = (
@@ -333,17 +333,16 @@ STATIC_URL = '/static/'
 
 
 ## Amazon S3 Settings
-if not DEBUG:       
+if DEBUG:       
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     #STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-    AWS_S3_SECURE_URLS = False       # use http instead of https
+    #AWS_S3_SECURE_URLS = False       # use http instead of https
     AWS_QUERYSTRING_AUTH = False     # don't add complex authentication-related query parameters for requests
-    AWS_ACCESS_KEY_ID = 'AKIAI4BBJY73PAMLVMRQ'
-    AWS_SECRET_ACCESS_KEY = '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'
+    #AWS_ACCESS_KEY_ID = 'AKIAI4BBJY73PAMLVMRQ'
+    #AWS_SECRET_ACCESS_KEY = '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'
     AWS_STORAGE_BUCKET_NAME = 'zen-tec.momo'
     #S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
-   # STATIC_URL = S3_URL
-    AWS_QUERYSTRING_AUTH = False
+    #STATIC_URL = S3_URL    
     AWS_HEADERS = {
     'Expires': 'Thu, 15 Apr 2020 20:00:00 GMT',
     'Cache-Control': 'max-age=86400',
