@@ -69,6 +69,7 @@ MEDIA_URL = '/media/'
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Make this unique, and don't share it with anybody.
+# Need to be changed when publish
 SECRET_KEY = '+0zsw5n@v7*rhl6r6ufqhoc6jlqq0f-u8c+gh(hjb+_jmg@rh6'
 
 
@@ -340,8 +341,8 @@ if DEBUG:
     #STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     #AWS_S3_SECURE_URLS = False       # use http instead of https
     AWS_QUERYSTRING_AUTH = False     # don't add complex authentication-related query parameters for requests
-    AWS_ACCESS_KEY_ID = 'AKIAIZ4YY4P56IZH5WJA'
-    AWS_SECRET_ACCESS_KEY = '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'
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
     AWS_STORAGE_BUCKET_NAME = 'zentec-momo'
     #S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
     #STATIC_URL = S3_URL    
