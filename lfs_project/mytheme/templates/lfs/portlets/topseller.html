@@ -1,8 +1,8 @@
 {% load i18n %}
+{% load thumbnail %}
+
 
 {% if topseller %}
-
-
     <div class="topseller-portlet portlet">  
 
           <div class="col-xl-12 col-xs-12 pal">
@@ -15,7 +15,7 @@
               <a class="wrap-product" href="{{product.get_absolute_url}}">
                         <div class="paxl"><div class="pa2xl"></div></div>
                          {% if product.get_image %}
-                        <img class="img-responsive" src="{{ product.get_image.image.url_400x400 }}" />
+                        <img class="img-responsive" src="{% thumbnail product.get_image.image 550x648 crop='0,0' %}" />
                         {% endif %}
                         <p class="product-name pal plxl prxl mtxl">{{ product.get_name }}</p>
                         <!-- <p class="price-before-sale small pal">USD 30.00</p> --><!-- if the item is none saled, just take out this tag -->

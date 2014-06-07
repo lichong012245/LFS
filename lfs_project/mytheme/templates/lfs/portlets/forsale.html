@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load lfs_tags %}
+{% load thumbnail %}
 
 {% if products %}
     <div class="forsale-products-portlet portlet">
@@ -35,7 +36,7 @@
                                 <a href="{{ product.get_absolute_url }}">
                                     {% if product.get_image %}
                                         <img alt="{{ product.get_name }}"
-                                             src="{{ product.get_image.image.url_400x400 }}" />
+                                             src="{% thumbnail product.get_image.image 559x315 crop='0,0' %}" />
                                     {% endif %}
                                 </a>
                             </div>

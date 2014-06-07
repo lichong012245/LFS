@@ -18,9 +18,6 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-# Catelog Thumb Size setting
-
-THUMBNAIL_SIZES = ((60, 60), (100, 100), (200, 200), (300, 300), (400, 400), (500, 500), (559, 315))
 
 DATABASES = {
     'default': {
@@ -112,7 +109,7 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
-INSTALLED_APPS = (
+INSTALLED_APPS = (    
     "lfs_project.mytheme",
     "lfstheme",
     "compressor",
@@ -130,7 +127,7 @@ INSTALLED_APPS = (
     'reviews',
     "tagging",
     "portlets",
-    "lfs",
+    "lfs_project.lfs",
     "lfs.tests",
     'lfs.core',
     'lfs.caching',
@@ -336,7 +333,7 @@ STATIC_URL = '/static/'
 
 
 ## Amazon S3 Settings
-if DEBUG:       
+if not DEBUG:       
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     #STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     #AWS_S3_SECURE_URLS = False       # use http instead of https
