@@ -18,6 +18,9 @@ from lfs.catalog.models import Image
 from lfs.catalog.settings import THUMBNAIL_SIZES
 from lfs.core.utils import LazyEncoder
 
+# easy_thumbnails
+from easy_thumbnails.files import get_thumbnailer
+
 # Load logger
 import logging
 logger = logging.getLogger("default")
@@ -111,12 +114,14 @@ def imagebrowser(request, template_name="manage/images/filebrowser_images.html")
                 "selected": 'right' == selected_class}]
 
     images = []
+    opitons={'size':(100,100),'crop':True}
     for image in Image.objects.all():
         images.append({
             "id": image.id,
             "title": image.title,
             "checked": image == selected_image,
-            "url": image.image.url_100x100,
+            "url": image.image.url,
+            "url_100x100":get_thumbnailer(image.image).get_thumbnail(opitons).url,
         })
 
     html = render_to_string(template_name, RequestContext(request, {
