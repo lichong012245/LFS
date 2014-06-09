@@ -189,52 +189,15 @@
         </div> <!-- // container / 4 columed product list-->
 		
 		<div class="clearfix mt4xl hidden-sm hidden-xs"></div>
-		 <div class="clearfix mt2xl visible-sm"></div>
+		<div class="clearfix mt2xl visible-sm"></div>
         <div class="clearfix mtxl visible-xs"></div>
 		
-        <div class="container">
-        	<div class="col-xl-12 col-xs-12 pal">
-           	<h3 class="col-xl-8 col-xs-8 capital ptl">Saled Items</h3>
-            	<div class="col-xl-4 col-xs-4"><a class="btn btn-default pull-right">View All Sale</a></div>
-           </div>
-		   
-			<div class="col-xl-3 col-md-3 col-sm-4 col-xs-6 pal">
-			  <a class="wrap-product" href="{{ STATIC_URL }}momo/#">
-						<div class="paxl"><div class="pa2xl"></div></div>
-						<img class="img-responsive" src="{{ STATIC_URL }}momo/images/product/product_pic_1.jpg" />
-						<p class="product-name pal plxl prxl mtxl">MARC BY MARC JACOBS Jacket<br /> Matelasse Long</p>
-						<p class="price-before-sale small pal">USD 30.00</p>
-						<p class="price pal pb2xl">USD 20.99</p>
-				</a>
-			</div>
-			<div class="col-xl-3 col-md-3 col-sm-4 col-xs-6 pal">
-			  <a class="wrap-product" href="{{ STATIC_URL }}momo/#">
-						<div class="paxl"><div class="pa2xl"></div></div>
-						<img class="img-responsive" src="{{ STATIC_URL }}momo/images/product/product_pic_2.jpg" />
-						<p class="product-name pal plxl prxl mtxl">Three Quarter Sleeve Bubble Top Stretch Sweater</p>
-						<p class="price-before-sale small pal">USD 30.00</p>
-						<p class="price pal pb2xl">USD 20.99</p>
-				</a>
-			</div>
-			<div class="col-xl-3 col-md-3 col-sm-4 col-xs-6 pal">
-			  <a class="wrap-product" href="{{ STATIC_URL }}momo/#">
-						<div class="paxl"><div class="pa2xl"></div></div>
-						<img class="img-responsive" src="{{ STATIC_URL }}momo/images/product/product_pic_3.jpg" />
-						<p class="product-name pal plxl prxl mtxl">FRENCH CONNECTION Skirt<br /> Sparkle Sunflower</p>
-						<p class="price-before-sale small pal">USD 30.00</p>
-						<p class="price pal pb2xl">USD 20.99</p>
-				</a>
-			</div>
-			<div class="col-xl-3 col-md-3 col-sm-4 col-xs-6 pal hidden-sm">
-			  <a class="wrap-product" href="{{ STATIC_URL }}momo/#">
-						<div class="paxl"><div class="pa2xl"></div></div>
-						<img class="img-responsive" src="{{ STATIC_URL }}momo/images/product/product_pic_4.jpg" />
-						<p class="product-name pal plxl prxl mtxl">DIANE von FURSTENBERG Skirt<br /> Samara Structured Fit and Flare</p>
-						<p class="price-before-sale small pal">USD 30.00</p>
-						<p class="price pal pb2xl">USD 20.99</p>
-				</a>
-			</div>
-            
+
+           {% block new-arrival %}
+            {% lfs_portlet_slot 'newarrival' %}
+          {% endblock %}
+
+        
         </div> <!-- // container / 4 columed product list-->
         
         <div class="clearfix pt14xl"></div>

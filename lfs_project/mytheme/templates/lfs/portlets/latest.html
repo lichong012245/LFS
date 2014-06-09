@@ -1,29 +1,44 @@
 {% load i18n lfs_tags %}
+{% load thumbnail %}
+
+          <div class="col-xl-12 col-xs-12 pal">
+            <h3 class="col-xl-8 col-xs-8 capital ptl">New Arrivals</h3>
+                <div class="col-xl-4 col-xs-4"><a class="btn btn-default pull-right">View All New Arrivals</a></div>
+           </div>
+
+
+           
 
 {% if products %}
-    <div class="latest-products-portlet portlet">
-        <div class="portlet-header">
-            {{ title }}
-        </div>
-        <div class="portlet-body">
+   
             {% if not slideshow %}
                 {% for product in products %}
-                <div class="portlet-item {% if forloop.last %}last{% endif %}">
-                    <a href="{{ product.get_absolute_url }}">
-                        {{ product.get_name }}
-                    </a>
-                    <div class="product-price">
-                        {{ product.price|currency:request}}*
-                        <div class="price-disclaimer">
-                            {% if product.price_includes_tax %}
-                                {% trans '*inc. VAT' %}
-                            {% else  %}
-                                {% trans '*exc. VAT' %}
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
+           <div class="col-xl-3 col-md-3 col-sm-4 col-xs-6 pal">
+              <a class="wrap-product" href="{{product.get_absolute_url}}">
+                        <div class="paxl"><div class="pa2xl"></div></div>
+                         {% if product.get_image %}
+                        <img class="img-responsive" src="{% thumbnail product.get_image.image 550x648 crop='0,0' %}" />
+                        {% endif %}
+                        <p class="product-name pal plxl prxl mtxl">{{ product.get_name }}</p>
+                        <!-- <p class="price-before-sale small pal">USD 30.00</p> --><!-- if the item is none saled, just take out this tag -->
+                        {% if product.for_sale %}
+                        <p class="price-before-sale small pal">USD {{ product.price }} / {{ product.price_unit }}</p>
+                        <p class="price pal pb2xl">USD {{ product.for_sale_price }} / {{ product.price_unit }}</p>
+                        {% else %}
+                        <p class="price pal pb2xl">USD {{ product.price }} / {{ product.price_unit }}</p>
+                        {% endif %}
+                </a>
+            </div>
+               {% endfor %}       
+
+
+
+
+
+
+
+
+
             {% else %}
             <div class="products-wrapper slideshow-latest">
                 {% for product in products %}
@@ -66,6 +81,5 @@
                 $('.slideshow-latest').tabs({ fx: { opacity: 'toggle', duration: 'fast' } }).tabs('rotate', 3000);
             </script>
             {% endif %}{# slideshow check #}
-        </div>{# portlet-body #}
-    </div>
+        
 {% endif %}

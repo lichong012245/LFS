@@ -23,7 +23,7 @@ from portlets.utils import register_portlet
 
 def register_lfs_portlets(sender, **kwargs):
     # don't register our portlets until the table has been created by syncdb
-    if sender == portlets.models:
+    if sender == portlets.models:        
         register_portlet(AverageRatingPortlet, "Average Rating")
         register_portlet(CartPortlet, "Cart")
         register_portlet(CategoriesPortlet, "Categories")
