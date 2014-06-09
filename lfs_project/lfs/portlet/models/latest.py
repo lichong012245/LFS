@@ -6,23 +6,20 @@ from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 
 # portlets imports
+from lfs.catalog.settings import VARIANT
 from portlets.models import Portlet
 
 # lfs imports
-from lfs.catalog.models import Category
-from lfs.catalog.models import Product
-from lfs.catalog.settings import PRODUCT_WITH_VARIANTS
-from lfs.caching.utils import lfs_get_object
+from lfs.catalog.models import Category, Product
 
 
-class ForsalePortlet(Portlet):
-    """A portlet for displaying for sale products.
+class LatestPortlet(Portlet):
+    """A portlet for displaying featured products.
     """
-
     class Meta:
         app_label = 'portlet'
 
-    name = _("Product Forsale")
+    name = _("Latest products")
 
     limit = models.IntegerField(_(u"Limit"), default=5)
     current_category = models.BooleanField(_(u"Use current category"), default=False)
@@ -37,37 +34,42 @@ class ForsalePortlet(Portlet):
         """
         request = context.get("request")
 
-        products = Product.objects.filter(for_sale=True)
+        latest_products = []
+        products = Product.objects.filter(active=True).exclude(sub_type=VARIANT)
         if self.current_category:
             obj = context.get("category") or context.get("product")
             if obj:
                 category = obj if isinstance(obj, Category) else obj.get_current_category(request)
                 categories = [category]
                 categories.extend(category.get_all_children())
-                products = products.filter(categories__in=categories)[:self.limit]
-            else:
-                products = None
+                filters = {"product__categories__in": categories}
+                products = products.filter(**filters).order_by('-creation_date')[:self.limit]
         else:
-            products = products[:self.limit]
+            products = products.order_by('-creation_date')[:self.limit]
 
-        return render_to_string("lfs/portlets/forsale.html", RequestContext(request, {
+        for product in products:
+            if product.is_product_with_variants() and product.has_variants():
+                latest_products.append(product.get_default_variant())
+            else:
+                latest_products.append(product)
+
+        return render_to_string("lfs/portlets/latest.html", RequestContext(request, {
             "title": self.rendered_title,
             "slideshow": self.slideshow,
-            "products": products,
-            "MEDIA_URL": context.get("MEDIA_URL"),
+            "products": latest_products
         }))
 
     def form(self, **kwargs):
         """
         """
-        return ForsaleForm(instance=self, **kwargs)
+        return LatestForm(instance=self, **kwargs)
 
     def __unicode__(self):
         return u"%s" % self.id
 
 
-class ForsaleForm(forms.ModelForm):
+class LatestForm(forms.ModelForm):
     """
     """
     class Meta:
-        model = ForsalePortlet
+        model = LatestPortlet

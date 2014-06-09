@@ -1,9 +1,7 @@
-{% load i18n %}
-{% load lfs_tags %}
-{% load thumbnail %}
+{% load i18n lfs_tags %}
 
 {% if products %}
-    <div class="featured-products-portlet portlet">
+    <div class="latest-products-portlet portlet">
         <div class="portlet-header">
             {{ title }}
         </div>
@@ -27,7 +25,7 @@
                 </div>
                 {% endfor %}
             {% else %}
-            <div class="products-wrapper slideshow">
+            <div class="products-wrapper slideshow-latest">
                 {% for product in products %}
                     <div id="tab-{{ forloop.counter }}"class="portlet-item">
                         <div class="product-data">
@@ -35,7 +33,7 @@
                                 <a href="{{ product.get_absolute_url }}">
                                     {% if product.get_image %}
                                         <img alt="{{ product.get_name }}"
-                                            src="{% thumbnail product.get_image.image 559x315 crop='0,0' %}" />
+                                            src="{{ product.get_image.image.url_100x100 }}" />
                                     {% endif %}
                                 </a>
                             </div>
@@ -65,7 +63,7 @@
                 </ul>
             </div>
             <script type="text/javascript">
-                $('.slideshow').tabs({ fx: { opacity: 'toggle', duration: 'fast' } }).tabs('rotate', 3000);
+                $('.slideshow-latest').tabs({ fx: { opacity: 'toggle', duration: 'fast' } }).tabs('rotate', 3000);
             </script>
             {% endif %}{# slideshow check #}
         </div>{# portlet-body #}
