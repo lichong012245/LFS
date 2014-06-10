@@ -4,9 +4,7 @@
 
 {% if products %}
     <div class="forsale-products-portlet portlet">
-        <div class="portlet-header">
-            {# {{ title }} #}
-        </div>
+        
         <div class="portlet-body">
             {% if not slideshow %}
                 {% for product in products %}
@@ -31,32 +29,31 @@
             <div class="products-wrapper slideshow">
                 {% for product in products %}
                     <div id="tab-{{ forloop.counter }}" class="portlet-item">
-                        <div class="product-data">
-                            <div class="product-image">
-                                <a href="{{ product.get_absolute_url }}">
+                        <div class="col-xl-6 col-sm-6 col-xs-12 pal">
+                            
+                                <a class="wrap-banner" href="{{ product.get_absolute_url }}">
                                     {% if product.get_image %}
-                                        <img alt="{{ product.get_name }}"
+                                        <div class="paxl"><div class="pa2xl"></div></div>
+                                        <img class="img-responsive" alt="{{ product.get_name }}"
                                              src="{% thumbnail product.get_image.image 559x315 crop='0,0' %}" />
                                     {% endif %}
                                 </a>
-                            </div>
-                            <div>
+                            
+                            
                                 <div class="product-title">{{ product.get_name }}</div>
-                            </div>
+                           
 
                             <div class="product-price">
-                                <span class="for-sale-standard-price">{{ product|get_standard_price:request|currency:request}}*</span>
-                                <span class="for-sale-price">{{ product.for_sale_price|currency:request}}*</span>
-                                <div class="price-disclaimer">
-                                    {% if product.price_includes_tax %}
-                                        {% trans '*inc. VAT' %}
-                                    {% else  %}
-                                        {% trans '*exc. VAT' %}
-                                    {% endif %}
-                                </div>
+                                <span class="for-sale-standard-price">{{ product|get_standard_price:request|currency:request}}</span>
+                                <span class="for-sale-price">{{ product.for_sale_price|currency:request}}</span>
+                                
                             </div>
                         </div>
                     </div>
+
+
+           
+
                 {% endfor %}{# slideshow products #}
                 {# tabs #}
                 <ul style="display:none">

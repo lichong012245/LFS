@@ -139,11 +139,7 @@
                          </span>
 						</div>
 					</form>
-					<div id="breadcrumbs">
-            <div class="container">
-                {% block breadcrumbs %}{% endblock %}
-            </div>
-        </div>
+					
 				</div><!--// nav-collapse -->
 			</div>
 		</div>
@@ -191,7 +187,8 @@
 		<div class="clearfix mt4xl hidden-sm hidden-xs"></div>
 		<div class="clearfix mt2xl visible-sm"></div>
         <div class="clearfix mtxl visible-xs"></div>
-		
+
+		<div class="container">
 
            {% block new-arrival %}
             {% lfs_portlet_slot 'newarrival' %}

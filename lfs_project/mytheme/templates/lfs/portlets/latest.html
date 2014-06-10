@@ -1,15 +1,14 @@
 {% load i18n lfs_tags %}
 {% load thumbnail %}
 
-          <div class="col-xl-12 col-xs-12 pal">
-            <h3 class="col-xl-8 col-xs-8 capital ptl">New Arrivals</h3>
+          
+{% if products %}
+
+           <div class="col-xl-12 col-xs-12 pal">
+             <h3 class="col-xl-8 col-xs-8 capital ptl">New Arrivals</h3>
                 <div class="col-xl-4 col-xs-4"><a class="btn btn-default pull-right">View All New Arrivals</a></div>
            </div>
 
-
-           
-
-{% if products %}
    
             {% if not slideshow %}
                 {% for product in products %}
