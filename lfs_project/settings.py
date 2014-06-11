@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 
 DIRNAME = os.path.dirname(__file__)
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 TESTING = False
 
@@ -141,7 +141,8 @@ INSTALLED_APPS = (
     'lfs.gross_price',
     'lfs.integrationtests',
     'lfs.mail',
-    'lfs.manage',
+    "lfs_project.lfs.manage",
+    #'lfs.manage',
     'lfs.marketing',
     'lfs.manufacturer',
     'lfs.net_price',
@@ -167,9 +168,11 @@ INSTALLED_APPS = (
     'paintstore',
     'image_cropping',
     'easy_thumbnails',
-    'lfs_project.django_carousel',
-    'storages',
+    'lfs_project.django_carousel',    
 )
+
+if not DEBUG:
+    INSTALLED_APPS +=('storages',)
 
 FORCE_SCRIPT_NAME=""
 LOGIN_URL = "/login/"

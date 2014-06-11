@@ -95,13 +95,13 @@ def imagebrowser(request, template_name="manage/images/filebrowser_images.html")
             pass
 
     sizes = []
-    for size in THUMBNAIL_SIZES:
-        size = "%sx%s" % (size[0], size[1])
-        sizes.append({
-            "value": size,
-            "title": size,
-            "selected": size == selected_size,
-        })
+    # for size in THUMBNAIL_SIZES:
+    #     size = "%sx%s" % (size[0], size[1])
+    #     sizes.append({
+    #         "value": size,
+    #         "title": size,
+    #         "selected": size == selected_size,
+    #     })
 
     classes = [{"value": 'inline',
                 "title": _(u'inline'),
