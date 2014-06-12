@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 
 DIRNAME = os.path.dirname(__file__)
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 TESTING = False
 
@@ -149,7 +149,7 @@ INSTALLED_APPS = (
     'lfs.order',
     'lfs.page',
     'lfs.payment',
-    'lfs.portlet',
+    'lfs_project.lfs.portlet',
     'lfs.search',
     'lfs.shipping',
     'lfs.supplier',
@@ -349,7 +349,15 @@ if not DEBUG:
     AWS_HEADERS = {
     'Expires': 'Thu, 15 Apr 2020 20:00:00 GMT',
     'Cache-Control': 'max-age=86400',
-}
+    }
+
+# Sendgrid
+
+    EMAIL_HOST = 'smtp.sendgrid.net'
+    EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
+    EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
 
 ## Django compressor for S3 Settings
 # if not DEBUG:
