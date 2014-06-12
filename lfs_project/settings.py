@@ -11,6 +11,8 @@ TEMPLATE_DEBUG = DEBUG
 TESTING = False
 THUMBNAIL_DEBUG =True
 
+SWITCH = False
+
 
 DEFAULT_FROM_EMAIL = 'your_email@domain.com'
 
@@ -215,7 +217,12 @@ CACHE_MIDDLEWARE_KEY_PREFIX = "lfs"
 # CACHE_BACKEND = 'file:///'
 # CACHE_BACKEND = 'locmem:///'
 # CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
-CACHE_BACKEND = 'dummy:///'
+#CACHE_BACKEND = 'dummy:///'
+
+# Cache backend for django 1.4.5
+CACHES = {'default': {
+ 'BACKEND':'django.core.cache.backends.locmem.LocMemCache',
+}}
 
 EMAIL_HOST = ""
 EMAIL_HOST_USER = ""
@@ -340,7 +347,7 @@ STATIC_URL = '/static/'
 
 
 ## Amazon S3 Settings
-if DEBUG:       
+if not SWITCH:       
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     #STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     #AWS_S3_SECURE_URLS = False       # use http instead of https
@@ -354,6 +361,7 @@ if DEBUG:
     'Expires': 'Thu, 15 Apr 2020 20:00:00 GMT',
     'Cache-Control': 'max-age=86400',
     }
+    THUMBNAIL_DEFAULT_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 # Sendgrid
 
