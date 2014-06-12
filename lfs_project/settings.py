@@ -9,6 +9,8 @@ DIRNAME = os.path.dirname(__file__)
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 TESTING = False
+THUMBNAIL_DEBUG =True
+
 
 DEFAULT_FROM_EMAIL = 'your_email@domain.com'
 
@@ -111,6 +113,8 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (    
     "lfs_project.mytheme",
+    #"lfs_project.lfs.catalog",
+    'lfs_project.lfs.portlet',
     "lfstheme",
     "compressor",
     "django.contrib.admin",
@@ -148,7 +152,7 @@ INSTALLED_APPS = (
     'lfs.order',
     'lfs.page',
     'lfs.payment',
-    'lfs_project.lfs.portlet',
+    #'lfs.portlet',
     'lfs.search',
     'lfs.shipping',
     'lfs.supplier',
@@ -312,6 +316,7 @@ THUMBNAIL_PROCESSORS = (
     'image_cropping.thumbnail_processors.crop_corners',
 ) + thumbnail_settings.THUMBNAIL_PROCESSORS
 
+THUMBNAIL_BASEDIR='thumbs'
 # heroku setting
 
 import dj_database_url
