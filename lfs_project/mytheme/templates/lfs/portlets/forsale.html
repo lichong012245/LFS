@@ -3,9 +3,9 @@
 {% load thumbnail %}
 
 {% if products %}
-    <div class="forsale-products-portlet portlet">
+   {# <div class="forsale-products-portlet portlet"> #}
         
-        <div class="portlet-body">
+       {# <div class="portlet-body"> #}
             {% if not slideshow %}
                 {% for product in products %}
                 <div class="portlet-item {% if forloop.last %}last{% endif %}">
@@ -66,6 +66,7 @@
                 $('.slideshow').tabs({ fx: { opacity: 'toggle', duration: 'fast' } }).tabs('rotate', 3000);
             </script>
             {% endif %}{# slideshow check #}
-        </div>{# portlet-body #}
-    </div>
+        {# portlet-body #}
+   {# </div>#}
+{#</div> #}
 {% endif %}

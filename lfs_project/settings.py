@@ -9,6 +9,10 @@ DIRNAME = os.path.dirname(__file__)
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 TESTING = False
+THUMBNAIL_DEBUG =True
+
+SWITCH = False
+
 
 DEFAULT_FROM_EMAIL = 'your_email@domain.com'
 
@@ -111,6 +115,8 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (    
     "lfs_project.mytheme",
+    #"lfs_project.lfs.catalog",
+    'lfs_project.lfs.portlet',
     "lfstheme",
     "compressor",
     "django.contrib.admin",
@@ -127,7 +133,7 @@ INSTALLED_APPS = (
     'reviews',
     "tagging",
     "portlets",
-    "lfs_project.lfs",
+    "lfs",
     "lfs.tests",
     'lfs.core',
     'lfs.caching',
@@ -140,16 +146,15 @@ INSTALLED_APPS = (
     "lfs.export",
     'lfs.gross_price',
     'lfs.integrationtests',
-    'lfs.mail',
-    "lfs_project.lfs.manage",
-    #'lfs.manage',
+    'lfs.mail',    
+    'lfs.manage',
     'lfs.marketing',
     'lfs.manufacturer',
     'lfs.net_price',
     'lfs.order',
     'lfs.page',
     'lfs.payment',
-    'lfs.portlet',
+    #'lfs.portlet',
     'lfs.search',
     'lfs.shipping',
     'lfs.supplier',
@@ -212,7 +217,12 @@ CACHE_MIDDLEWARE_KEY_PREFIX = "lfs"
 # CACHE_BACKEND = 'file:///'
 # CACHE_BACKEND = 'locmem:///'
 # CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
-CACHE_BACKEND = 'dummy:///'
+#CACHE_BACKEND = 'dummy:///'
+
+# Cache backend for django 1.4.5
+CACHES = {'default': {
+ 'BACKEND':'django.core.cache.backends.locmem.LocMemCache',
+}}
 
 EMAIL_HOST = ""
 EMAIL_HOST_USER = ""
@@ -313,6 +323,7 @@ THUMBNAIL_PROCESSORS = (
     'image_cropping.thumbnail_processors.crop_corners',
 ) + thumbnail_settings.THUMBNAIL_PROCESSORS
 
+THUMBNAIL_BASEDIR='thumbs'
 # heroku setting
 
 import dj_database_url
@@ -336,7 +347,7 @@ STATIC_URL = '/static/'
 
 
 ## Amazon S3 Settings
-if not DEBUG:       
+if not SWITCH:       
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     #STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     #AWS_S3_SECURE_URLS = False       # use http instead of https
@@ -349,7 +360,16 @@ if not DEBUG:
     AWS_HEADERS = {
     'Expires': 'Thu, 15 Apr 2020 20:00:00 GMT',
     'Cache-Control': 'max-age=86400',
-}
+    }
+    THUMBNAIL_DEFAULT_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+# Sendgrid
+
+    EMAIL_HOST = 'smtp.sendgrid.net'
+    EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
+    EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
 
 ## Django compressor for S3 Settings
 # if not DEBUG:
