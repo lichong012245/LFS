@@ -139,16 +139,16 @@
                          </span>
 						</div>
 					</form>
-					
-				</div><!--// nav-collapse -->
-			</div>
-		</div>
-		<div class="container livesearch-wrapper">
+					<div class="container livesearch-wrapper">
                  <div id="livesearch-result"></div>
             </div>
         </div>
+				</div><!--// nav-collapse -->
+			</div>
+		</div>
+		
 
-    
+    {% block wrapper %}
         <div class="container top-hero">
              <div class="col-xl-12 col-xs-12 pal">
                 {% block carousel %}
@@ -199,6 +199,6 @@
         
         <div class="clearfix pt14xl"></div>
 	</div> <!-- // wrap -->
-       
+       {% endblock %}
     </body>
 </html>
