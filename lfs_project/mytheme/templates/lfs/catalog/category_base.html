@@ -1,7 +1,9 @@
 {% extends "lfs/base.html" %}
 {% load lfs_tags  %}
 {% load portlets_tags %}
+{% load lfs_portlets_tags %}
 {% load lfs_theme_tags %}
+{% load thumbnail %}
 
 {% block title %}
     {{ category.get_meta_title }} - {{ block.super }}
@@ -18,11 +20,23 @@
     {% endif %}
 {% endblock %}
 
-{% block breadcrumbs %}
-    {% breadcrumbs category %}
-{% endblock %}
+
 
 {% block content %}
+<div class="container">
+<div class="col-xl-2 col-md-2 col-xs-12 pal">
+   <div class="product-list-nav">
+     {% block category-slot %}         
+       {% lfs_portlet_slot 'category' %} 
+     {% endblock %}    
+    </div>
+</div>
+<div class="col-xl-10 col-md-10 col-xs-12">
+   <ol class="breadcrumb pt2xl mtl">
+     {% breadcrumbs category %}
+   </ol>
+</div>     
     {{ category.static_block.html|safe }}
     {{ category_inline|safe }}
+</div>
 {% endblock %}
