@@ -1,6 +1,5 @@
 {% extends "lfs/base.html" %}
 {% load i18n lfs_tags lfs_portlets_tags %}
-{% load carousel %}
 
 {% block title %}
     {{ page.get_meta_title }} - {{ block.super }}
@@ -21,25 +20,6 @@
     {% breadcrumbs page %}
 {% endblock %}
 
-{% block carousel %}
-     {% carousel carousel_name='Frontpage' %}
-    <div class="row-fluid">
-        <div class="span12">
-            <div id="lfsCarousel" class="carousel slide">
-                <div class="carousel-inner">
-                    <div class="active item"><img src="{{ STATIC_URL }}img/carousel/slideshow_1.jpg" alt="" class="img-rounded"></div>
-                    <div class="item"><img src="{{ STATIC_URL }}img/carousel/slideshow_2.jpg" alt="" class="img-rounded"></div>
-                    <div class="item"><img src="{{ STATIC_URL }}img/carousel/slideshow_3.jpg" alt="" class="img-rounded"></div>
-                    <div class="item"><img src="{{ STATIC_URL }}img/carousel/slideshow_4.jpg" alt="" class="img-rounded"></div>
-                </div>
-                <a class="carousel-control left hidden-phone" href="#lfsCarousel" data-slide="prev">&lsaquo;</a>
-                <a class="carousel-control right hidden-phone" href="#lfsCarousel" data-slide="next">&rsaquo;</a>
-            </div>
-        </div>
-    </div>
-
-{% endblock %}
-
 {% block content %}
     <h1 class="first-heading">
         {{ page.title }}
@@ -47,6 +27,7 @@
     <div>
         {{ page.body|safe }}
     </div>
+   
 
     {% if page.file %}
         <a href="{{page.file.url}}">
