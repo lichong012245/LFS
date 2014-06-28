@@ -1,82 +1,30 @@
 {% load i18n lfs_tags %}
+{% load thumbnail %}
 
-{% include "lfs/catalog/categories/product/products_navigation.html" %}
 
 {% sorting %}
-
-<h1 class="first-heading">
-    {{ category.name }}
-</h1>
-<div class="description">
-    {{ category.description|safe }}
-</div>
-<div id="products">
-    <table class="lfs-default">
-        {% for col in products %}
-        <tr class="product-row">
-            {% for product in col %}
-                <td class="product-data"
-                    onclick="window.location='{% url lfs.catalog.views.product_view product.slug %}'">
-                    <div class="product-image">
-                        <a href="{% url lfs.catalog.views.product_view product.slug %}">
-                            {% if product.image.url_100x100 %}
-                                <img alt="{{ product.name }}"
-                                     src="{{ product.image.url_100x100 }}" />
+{% if products %}
+{% for col in products %}
+{% for product in col %} 
+ <div class="col-xl-4 col-md-4 col-sm-4 col-xs-6 pal">
+                  <a class="wrap-product" href="{{product.get_absolute_url}}">
+                            <div class="paxl"><div class="pa2xl"></div></div>
+                            {% if product.get_image %}
+                            <img class="img-responsive" src="{% thumbnail product.image 550x648 crop='0,0' %}" />
                             {% endif %}
-                        </a>
-                    </div>
-                    <div>
-                        <div class="product-title">{{ product.name }}</div>
-                        <div class="product-description">{{ product.obj.get_short_description|safe }}</div>
-                    </div>
-
-                    {% category_product_prices_gross product.obj.id %}
-
-                    <div class="product-price">
-                        {% if price_starting_from %}
-                            {% trans "Starting at" %}
-                        {% endif %}
-                        {% if product.obj.get_for_sale %}
-                           <span class="for-sale-standard-price">{{ standard_price|currency:request }}*</span>
-                           <span class="for-sale-price">{{ price|currency:request }}*</span>
+                            <p class="product-name pal plxl prxl mtxl">{{ product.get_name }}</p>
+                            <!-- <p class="price-before-sale small pal">USD 30.00</p> --><!-- if the item is none saled, just take out this tag -->
+                            {% if product.for_sale %}
+                        <p class="price-before-sale small pal">USD {{ product.price }} / {{ product.price_unit }}</p>
+                        <p class="price pal pb2xl">USD {{ product.for_sale_price }} / {{ product.price_unit }}</p>
                         {% else %}
-                            <span class="standard-price">{{ price|currency:request }}*</span>
-                        {% endif %}
-                        {% if product.price_unit %}
-                            / {{ product.price_unit }}
-                        {% endif %}
-                        {% if product.obj.get_active_packing_unit %}
-                            <div class="base-price">
-                                {{ base_packing_price|currency:request }}* / {{ product.obj.get_packing_info.1 }}
-                            </div>
-                        {% endif %}
-                        {% if product.obj.get_active_base_price %}
-                            <div class="base-price">
-                                {% if base_price_starting_from %}
-                                    {% trans "Starting at" %}
-                                {% endif %}
-                                {{ base_price|currency:request }}*
-                                {% if product.obj.get_base_price_unit %}
-                                    / {{ product.obj.get_base_price_unit }}
-                                {% endif %}
-                            </div>
-                        {% endif %}
-                        <div class="price-disclaimer">
-                            {% if product.price_includes_tax %}
-                                {% trans '*inc. VAT' %}
-                            {% else  %}
-                                {% trans '*exc. VAT' %}
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="details-button">
-                        <a class="button emphasized"
-                           href="{% url lfs_product product.slug %}">{% trans 'Details' %}
-                        </a>
-                    </div>
-                </td>
-            {% endfor %}
-        </tr>
-        {% endfor %}
-    </table>
+                        <p class="price pal pb2xl">USD {{ product.price }} / {{ product.price_unit }}</p>
+                        {% endif %}                            
+                    </a>
 </div>
+{% endfor %}
+{% endfor %}
+{% endif %}
+
+
+{% include "lfs/catalog/categories/product/products_navigation.html" %}

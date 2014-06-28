@@ -1,6 +1,8 @@
 {% extends "lfs/base.html" %}
 {% load i18n %}
 {% load carousel %}
+{% load thumbnail %}
+
 
 {% block head %}
     {% if shop.get_meta_keywords %}
@@ -25,7 +27,4 @@
     </ul>
 {% endblock %}
 
-{% block content %}
-    {{ shop.static_block.html|safe }}
-    {{ shop.description|safe }}
-{% endblock %}
+
