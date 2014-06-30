@@ -31,12 +31,12 @@
      {% endblock %}    
     </div>
 </div>
-<div class="col-xl-10 col-md-10 col-xs-12">
+  <div class="col-xl-10 col-md-10 col-xs-12">
    <ol class="breadcrumb pt2xl mtl">
      {% breadcrumbs category %}
-   </ol>
-</div>     
+   </ol>     
     {{ category.static_block.html|safe }}
     {{ category_inline|safe }}
+   </div>
 </div>
 {% endblock %}

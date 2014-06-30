@@ -5,24 +5,25 @@
 {% sorting %}
 
 
-
-{% for product in products %} 
+ {% for col in products %}
+{% for product in col %} 
  <div class="col-xl-4 col-md-4 col-sm-4 col-xs-6 pal">
                   <a class="wrap-product" href="{% url lfs.catalog.views.product_view product.slug %}">
                             <div class="paxl"><div class="pa2xl"></div></div>
                             
-                            <img class="img-responsive" src="" />
+                            <img class="img-responsive" src="{% thumbnail product.image 550x648 crop='0,0' %}" />
                             
                             <p class="product-name pal plxl prxl mtxl">{{ product.name }}</p>
                             <!-- <p class="price-before-sale small pal">USD 30.00</p> --><!-- if the item is none saled, just take out this tag -->
-                            {% if product.obj.get_for_sale %}
-                        <p class="price-before-sale small pal">USD {{ standard_price }} / {{ product.price_unit }}</p>
-                        <p class="price pal pb2xl">USD {{ price }} / {{ product.price_unit }}</p>
+                            {% if product.obj.for_sale %}
+                        <p class="price-before-sale small pal">USD {{ product.obj.price }} / {{ product.obj.price_unit }}</p>
+                        <p class="price pal pb2xl">USD {{ product.obj.for_sale_price }} / {{ product.obj.price_unit }}</p>
                         {% else %}
-                        <p class="price pal pb2xl">USD {{ standard_price }} / {{ product.price_unit }}</p>
+                        <p class="price pal pb2xl">USD {{ product.obj.price }} / {{ product.price_unit }}</p>
                         {% endif %}                            
                     </a>
 </div>
+{% endfor %}
 {% endfor %}
 
 
