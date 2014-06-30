@@ -4,28 +4,18 @@
 {% block title %}
     {% trans 'Search results' %} - {{ block.super }}
 {% endblock %}
-
+<div class="col-xl-12 col-xs-12 pal">
 {% block section %}search-results{% endblock %}
 
 {% block breadcrumbs %}
+    <ol class="breadcrumb pt2xl mtl">
     {% breadcrumbs _("Search results") %}
+    <ol/>
 {% endblock %}
 
 {% block wrapper %}
 
-    <h1 class="first-heading">{% trans 'Search results' %}</h1>
-
-    <label for="search">{% trans 'Search' %}:</label>
-    <form action="{% url lfs_search %}"
-          class="search-results-form">
-        <input id="search-results-input"
-               type="text"
-               value="{{ q }}"
-               name="q" />
-
-        <input type="submit"
-               value="{% trans 'Go!' %}">
-    </form>
+    
 
     <p class="search-results-description">
         {% trans 'You searched for' %} <span class="search-results-query">"{{ q }}"</span>.
@@ -35,9 +25,9 @@
     {% if products %}
 
         {% if not paginator %}
-            {% autopaginate products 10 %}
+            {% autopaginate products 2 %}
         {% endif %}
-        {% paginate %}
+        
         {% sorting %}
 
         <table class="lfs-default padding-top">
@@ -105,3 +95,4 @@
         {% paginate %}
     {% endif %}
 {% endblock %}
+</div>
