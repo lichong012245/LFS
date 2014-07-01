@@ -3,4 +3,6 @@
 
 {% if amount_of_items_int %}
 <a class="btn btn-link btn-cart pull-right" href="{% url lfs.cart.views.cart %}"><span>{{ amount_of_items_int }}</span></a>
+{% else %}
+<a class="btn btn-link btn-cart pull-right" href="{% url lfs.cart.views.cart %}"><span>0</span></a>
 {% endif %}

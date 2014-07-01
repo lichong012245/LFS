@@ -11,7 +11,7 @@ TEMPLATE_DEBUG = DEBUG
 TESTING = False
 THUMBNAIL_DEBUG =True
 
-SWITCH = False
+SWITCH = True
 
 
 DEFAULT_FROM_EMAIL = 'your_email@domain.com'
@@ -265,9 +265,9 @@ LFS_UNITS = [
     u"lfm",
     u"Package",
     u"Piece",
-    u"",
-    u"",
-    u"",
+    u"ge",
+    u"jian",
+    u"tiao",
 ]
 
 LFS_PRICE_UNITS = LFS_BASE_PRICE_UNITS = LFS_PACKING_UNITS = LFS_UNITS
