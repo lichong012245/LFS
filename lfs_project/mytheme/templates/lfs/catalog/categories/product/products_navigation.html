@@ -4,7 +4,7 @@
     <ul class="pagination pull-right">
     
     {% if pagination.has_prev %}
-    <li class="previous-page">
+    <li>
         <a href="{{ pagination.url }}?{{ pagination.getparam }}={{ pagination.prev }}{{ pagination.getvars }}">&laquo;</a>
     </li>
     {% else %}
@@ -22,7 +22,7 @@
     {% endfor %}
 
     {% if pagination.has_next %}
-    <li class="next-page">
+    <li>
         <a href="{{ pagination.url }}?{{ pagination.getparam }}={{ pagination.next }}{{ pagination.getvars }}">&raquo;</a>
     </li>
     {% else %}

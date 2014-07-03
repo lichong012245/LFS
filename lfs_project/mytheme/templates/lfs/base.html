@@ -9,7 +9,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,21 +21,21 @@
     <link href="{{ STATIC_URL }}momo/css/main.css" rel="stylesheet">
 
 
-      <!-- css (migrate from lfs base.html) -->
-           <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}jquery/lightbox/jquery.lightbox-0.5.css" />
-            <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}jquery-ui-1.8.13.custom/css/smoothness/jquery-ui-1.8.13.custom.css" />
-            <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}jquery/jquery.jgrowl.css" />
-            <!--link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}jquery-ui-1.8.13.custom/css/smoothness/jquery-ui-1.8.13.custom.css" /-->
-            <!--link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}jquery/jquery.jgrowl.css" /-->
-            <!--link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}yui/reset-fonts.css"-->
-            <!--link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}blueprint/src/grid.css"-->
-            <!--link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/main.css" /-->
+    <!-- css (migrate from lfs base.html) -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}jquery/lightbox/jquery.lightbox-0.5.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}jquery-ui-1.8.13.custom/css/smoothness/jquery-ui-1.8.13.custom.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}jquery/jquery.jgrowl.css" />
+    <!--link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}jquery-ui-1.8.13.custom/css/smoothness/jquery-ui-1.8.13.custom.css" /-->
+    <!--link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}jquery/jquery.jgrowl.css" /-->
+    <!--link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}yui/reset-fonts.css"-->
+    <!--link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}blueprint/src/grid.css"-->
+    <!--link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/main.css" /-->
 
-             <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script type="text/javascript" src="{{ STATIC_URL }}momo/javascripts/jquery-1.11.0.min.js"></script>
-        <script type="text/javascript" src="{{ STATIC_URL }}momo/javascripts/jquery-migrate-1.2.1.min.js"></script>
-        <script type="text/javascript" src="{{ STATIC_URL }}momo/javascripts/bootstrap.min.js"></script>
-        <script type="text/javascript" src="{{ STATIC_URL }}momo/javascripts/offset-canvas.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script type="text/javascript" src="{{ STATIC_URL }}momo/javascripts/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}momo/javascripts/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}momo/javascripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}momo/javascripts/offset-canvas.js"></script>
 
 
         <!--
@@ -48,7 +48,7 @@
             <script type="text/javascript" src="{{ STATIC_URL }}jquery/jquery.cookie.js"></script>
             <script type="text/javascript" src="{{ STATIC_URL }}jquery/lightbox/jquery.lightbox-0.5.js"></script>
 
-      
+
 <!--
         <script type="text/javascript">
         $(function () {
@@ -72,173 +72,146 @@
             });           
 
         </script>
--->
+    -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <!--[if IE 8]><link href="{{ STATIC_URL }}momo/css/ie8-fix.css" rel="stylesheet"><![endif]-->
+      <![endif]-->
+      <!--[if IE 8]><link href="{{ STATIC_URL }}momo/css/ie8-fix.css" rel="stylesheet"><![endif]-->
 
-	
+
 </head>
 <body>
-	<div class="wrap fixed-width-by-lg">
-	
-		<div class="container mod-header navbar">
-			<div class="navigation">
-				<div class="navbar-header col-xl-2 col-md-2 col-xs-12">
-					<button type="button" class="navbar-toggle mt4xl" data-toggle="offcanvas" data-target=".navbar-offcanvas" data-canvas="body">
-                        <i class="fa fa-bars fa-3x fa-fw"></i>
-                    </button>
-                    <a class="navmenu-brand" href="/"><img class="img-responsive" src="{{ STATIC_URL }}momo/images/global/logo_momo.png" /></a>					
-				</div>
-				<div class="navbar-offcanvas offcanvas">
-                    <a class="navmenu-brand" href="/"><img class="img-responsive" src="{{ STATIC_URL }}momo/images/global/logo_momo.png" /></a>
-                    <div class="col-xl-10 col-md-10 col-xs-12">
-                    <div class="col-xl-6 col-md-6 hidden-xs hidden-sm  paxl mt2xl small">The only place to shop K-style clothes</div>
-                        <div class="col-xl-6 col-md-6 col-sx-12 pt2xl">
+<div class="wrap fixed-width-by-lg">
 
-                            {% if user.is_authenticated %}                           
-                            
-                            
-                          
-                            <a class="btn btn-info pull-right" href="/logout">{% trans 'Logout' %}</a>
+    <div class="container mod-header navbar">
+       <div class="navigation">
+        <div class="navbar-header col-xl-2 col-md-2 col-xs-12">
+         <button type="button" class="navbar-toggle mt4xl" data-toggle="offcanvas" data-target=".navbar-offcanvas" data-canvas="body"><i class="fa fa-bars fa-3x fa-fw"></i></button>
+         <a class="navmenu-brand" href="/"><img class="img-responsive" src="{{ STATIC_URL }}momo/images/global/logo_momo.png" /></a></div>
+        <div class="navbar-offcanvas offcanvas">
+        <a class="navmenu-brand" href="/"><img class="img-responsive" src="{{ STATIC_URL }}momo/images/global/logo_momo.png" /></a>
+        <div class="col-xl-10 col-md-10 col-xs-12">
+            <div class="col-xl-6 col-md-6 hidden-xs hidden-sm  paxl mt2xl small">The only place to shop K-style clothes</div>
+            <div class="col-xl-6 col-md-6 col-sx-12 pt2xl">
+                {% if user.is_authenticated %}                          
 
-                            <a class="btn btn-info pull-right" href="{% url lfs_my_account %}">{% trans 'Account' %}</a>
-                            
-                            {% if user.is_superuser %}
-                                {% if category %}
-                                    <a class="btn btn-info pull-right" href="{% url lfs_manage_category category.id %}">{% trans 'Manage' %}</a>
-                                {% endif %}
-                                {% if product %}
-                                    <a class="btn btn-info pull-right" href="{% url lfs_manage_product product.id %}">{% trans 'Manage' %}</a>
-                                {% endif %}
-                                {% if page %}
-                                    <a class="btn btn-info pull-right" href="{% url lfs_manage_page page.id %}">{% trans 'Manage' %}</a>
-                                {% endif %}
-                                {% if not category and not product and not page %}
-                                    <a class="btn btn-info pull-right" href="{% url lfs_manage_dashboard %}">{% trans 'Manage' %}</a>
-                                {% endif %}                                
-                            {% endif %}
+                <a class="btn btn-info pull-right" href="/logout">{% trans 'Logout' %}</a>
 
-                            {% if user.first_name %}
-                                <a class="btn btn-info pull-right">{{ user.first_name }} {{user.last_name}}</a>
-                            {% else %}
-                                <a class="btn btn-info pull-right">{{ user.username }}</a>
-                            {% endif %} 
+                <a class="btn btn-info pull-right" href="{% url lfs_my_account %}">{% trans 'Account' %}</a>
 
-                        {% else %}
-                            {% if not ANON_ONLY %}
-                                <a class="btn btn-info pull-right" href="{% url lfs_login %}">{% trans 'Login' %}</a> 
-                            {% endif %}
+                {% if user.is_superuser %}
+                {% if category %}
+                <a class="btn btn-info pull-right" href="{% url lfs_manage_category category.id %}">{% trans 'Manage' %}</a>
+                {% endif %}
+                {% if product %}
+                <a class="btn btn-info pull-right" href="{% url lfs_manage_product product.id %}">{% trans 'Manage' %}</a>
+                {% endif %}
+                {% if page %}
+                <a class="btn btn-info pull-right" href="{% url lfs_manage_page page.id %}">{% trans 'Manage' %}</a>
+                {% endif %}
+                {% if not category and not product and not page %}
+                <a class="btn btn-info pull-right" href="{% url lfs_manage_dashboard %}">{% trans 'Manage' %}</a>
+                {% endif %}                                
+                {% endif %}
 
-                        {% endif %}
+                {% if user.first_name %}
+                <a class="btn btn-info pull-right">{{ user.first_name }} {{user.last_name}}</a>
+                {% else %}
+                <a class="btn btn-info pull-right">{{ user.username }}</a>
+                {% endif %} 
 
-                            {% block cart-slot %}
-                              {% lfs_portlet_slot 'cart' %}
-                            {% endblock %}
-                            
-                        </div>		
+                {% else %}
+                {% if not ANON_ONLY %}
+                <a class="btn btn-info pull-right" href="{% url lfs_login %}">{% trans 'Login' %}</a> 
+                {% endif %}
 
-                    <div class="clearfix hidden-xs hidden-sm mt10xl"></div>
-					<ul class="nav navbar-nav">
-						{% block tabs %}
-                          {% tabs %}
-                        {% endblock %}
-					</ul> <!-- // navbar-nav -->
-					
+                {% endif %}
 
-                            
-					<form class="navbar-form navbar-right" role="search" id="search-form"
-                              action="{% url lfs_search %}"
-                              autocomplete="off">
-						<div class="input-group">
-							<input type="hidden" name="livesearch" value="1" />
-							<input type="text" class="form-control" placeholder="Search" id="search-input" value="{{ q }}" name="q" autocomplete="off" data-url="{% url lfs_livesearch %}">
-                         <span class="input-group-btn">
-                         		<button type="submit" class="btn btn-info btn-search" type="button"><i class="fa fa-search fa-fw fa-lg"></i></button>
-                         </span>
-						</div>
-					</form>
-					<div class="container livesearch-wrapper">
-                 <div id="livesearch-result"></div>
-                    </div>
-
-        </div>
-		</div><!--// nav-collapse -->
-		</div>
-		</div>
-
-
-		<div class="container livesearch-wrapper">
-                 <div id="livesearch-result"></div>
-            </div>
-
-        {% block breadcrumbs %}
-    
-           {% endblock %}
-
-     {% block wrapper %}
-       {% block content %}
-
-
-        <div class="container top-hero">
-             <div class="col-xl-12 col-xs-12 pal">
-                {% block carousel %}
+                {% block cart-slot %}
+                {% lfs_portlet_slot 'cart' %}
                 {% endblock %}
-            </div>
-        </div> <!-- // container / carousel section -->
-        
-        <div class="container">
-             
-             {% block category-slot %}             
-             {% endblock %}
 
-        	{% block featured-slot %}
-              {% lfs_portlet_slot 'featured' %}
-               {% endblock %}
-            
-               {% block onsale-slot %}
-			  {% lfs_portlet_slot 'onsale' %}
-			   {% endblock %}
-            
-        </div> <!-- // container / about section -->
-		
-		 <div class="clearfix mt4xl hidden-sm hidden-xs"></div>
-		 <div class="clearfix mt2xl visible-sm"></div>
-        <div class="clearfix mtxl visible-xs"></div>
-		
-        <div class="container">
-        	
-		  {% block left-slot %}
-            {% lfs_portlet_slot 'Left' %}
-          {% endblock %}
+            </div>		
 
-			
-            
-        </div> <!-- // container / 4 columed product list-->
-		
-		<div class="clearfix mt4xl hidden-sm hidden-xs"></div>
-		<div class="clearfix mt2xl visible-sm"></div>
-        <div class="clearfix mtxl visible-xs"></div>
+            <div class="clearfix hidden-xs hidden-sm mt10xl"></div>
+            <ul class="nav navbar-nav">
+              {% block tabs %}
+              {% tabs %}
+              {% endblock %}
+            </ul> <!-- // navbar-nav -->
+            <form class="navbar-form navbar-right" role="search" id="search-form" action="{% url lfs_search %}" autocomplete="off">
+                <div class="input-group">
+                 <input type="hidden" name="livesearch" value="1" />
+                 <input type="text" class="form-control" placeholder="Search" id="search-input" value="{{ q }}" name="q" autocomplete="off" data-url="{% url lfs_livesearch %}">
+                 <span class="input-group-btn">
+                     <button type="submit" class="btn btn-info btn-search" type="button"><i class="fa fa-search fa-fw fa-lg"></i></button>
+                 </span>
+              </div>
+           </form> 
+        </div>
+        </div><!--// nav-collapse -->
+       </div>
+    </div>
 
-		<div class="container">
 
-           {% block new-arrival %}
-            {% lfs_portlet_slot 'newarrival' %}
-          {% endblock %}
 
-        
-        </div> <!-- // container / 4 columed product list-->
-        
-        <div class="clearfix pt14xl"></div>
-	</div> <!-- // wrap -->
 
-       {% endblock %}
-      {% endblock %} 
+{% block breadcrumbs %}
 
-    </body>
+{% endblock %}
+
+{% block wrapper %}
+{% block content %}
+
+
+<div class="container top-hero">
+   <div class="col-xl-12 col-xs-12 pal">
+    {% block carousel %}
+    {% endblock %}
+   </div>
+</div> <!-- // container / carousel section -->
+
+<div class="container">
+
+   {% block category-slot %}             
+   {% endblock %}
+
+   {% block featured-slot %}
+   {% lfs_portlet_slot 'featured' %}
+   {% endblock %}
+
+   {% block onsale-slot %}
+   {% lfs_portlet_slot 'onsale' %}
+   {% endblock %}
+</div> <!-- // container / about section -->
+
+<div class="clearfix mt4xl hidden-sm hidden-xs"></div>
+<div class="clearfix mt2xl visible-sm"></div>
+<div class="clearfix mtxl visible-xs"></div>
+
+<div class="container">
+    {% block left-slot %}
+    {% lfs_portlet_slot 'Left' %}
+    {% endblock %}
+</div> <!-- // container / 4 columed product list-->
+
+<div class="clearfix mt4xl hidden-sm hidden-xs"></div>
+<div class="clearfix mt2xl visible-sm"></div>
+<div class="clearfix mtxl visible-xs"></div>
+
+<div class="container">
+ {% block new-arrival %}
+ {% lfs_portlet_slot 'newarrival' %}
+ {% endblock %}
+</div> <!-- // container / 4 columed product list-->
+
+<div class="clearfix pt14xl"></div>
+{% endblock %}
+{% endblock %} 
+</div> <!-- // wrap -->
+</body>
 </html>
