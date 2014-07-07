@@ -194,8 +194,12 @@
 <div class="clearfix mtxl visible-xs"></div>
 
 <div class="container">
-    {% block left-slot %}
-    {% lfs_portlet_slot 'Left' %}
+    <div class="col-xl-12 col-xs-12 pal">
+            <h3 class="col-xl-8 col-xs-8 capital ptl">MO-MO Best</h3>
+                <div class="col-xl-4 col-xs-4"><a class="btn btn-default pull-right" href="/page/top-seller">{% trans 'View All Best' %}</a></div>
+    </div>
+    {% block topseller-slot %}
+    {% lfs_portlet_slot 'topseller' %}
     {% endblock %}
 </div> <!-- // container / 4 columed product list-->
 
@@ -204,8 +208,8 @@
 <div class="clearfix mtxl visible-xs"></div>
 
 <div class="container">
- {% block new-arrival %}
- {% lfs_portlet_slot 'newarrival' %}
+ {% block newarrival-slot %}
+ 
  {% endblock %}
 </div> <!-- // container / 4 columed product list-->
 

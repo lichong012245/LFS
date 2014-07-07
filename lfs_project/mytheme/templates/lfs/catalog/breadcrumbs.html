@@ -8,7 +8,9 @@
             {% if forloop.last %}
               <li class="active">{{ object.name }}</li>
             {% else %}
+               {% if object.name != "Information" %}
                 <li><a href="{{ object.url }}">{{ object.name }}</a></li>
+                {% endif %}
             {% endif %}        
     {% endfor %}
 

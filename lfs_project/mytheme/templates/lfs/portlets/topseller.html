@@ -5,10 +5,7 @@
 {% if topseller %}
     <div class="topseller-portlet portlet">  
 
-          <div class="col-xl-12 col-xs-12 pal">
-            <h3 class="col-xl-8 col-xs-8 capital ptl">MO-MO Best</h3>
-                <div class="col-xl-4 col-xs-4"><a class="btn btn-default pull-right" href="{% url lfs_pages %}">{% trans 'View All Best' %}</a></div>
-           </div>
+          
 
                 {% for product in topseller %}
            <div class="col-xl-3 col-md-3 col-sm-4 col-xs-6 pal">

@@ -16,18 +16,33 @@
 
 {% block section %}page{% endblock %}
 
-{% block breadcrumbs %}
+
+    {% block breadcrumbs %}
+    <div class="container">
+    <ol class="breadcrumb pt2xl mtl">
     {% breadcrumbs page %}
-{% endblock %}
+    </ol>
+    </div>
+    {% endblock %}
+
 
 {% block content %}
-    <h1 class="first-heading">
-        {{ page.title }}
-    </h1>
+    
     <div>
         {{ page.body|safe }}
     </div>
-   
+
+<div class="container">
+    {% block page-newarrival-slot %}
+   {% lfs_portlet_slot 'page-newarrival' %}
+   {% endblock %}
+</div>
+
+<div class="container">
+   {% block page-topseller-slot %}
+    {% lfs_portlet_slot 'page-topseller' %}
+    {% endblock %}
+</div>
 
     {% if page.file %}
         <a href="{{page.file.url}}">

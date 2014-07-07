@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load carousel %}
 {% load thumbnail %}
+{% load lfs_portlets_tags %}
 
 
 {% block head %}
@@ -22,4 +23,9 @@
     
 {% endblock %}
 
-
+{% block topseller-slot %}
+    {% lfs_portlet_slot 'topseller' %}
+{% endblock %}
+{% block newarrival-slot %}
+ {% lfs_portlet_slot 'newarrival' %}
+{% endblock %}
