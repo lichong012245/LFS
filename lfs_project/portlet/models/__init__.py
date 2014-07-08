@@ -12,3 +12,4 @@ from .forsale import *
 from .featured import *
 from .latest import *
 from .topsellerall import *
+from .latestall import *

@@ -15,6 +15,7 @@ from .models import TopsellerPortlet
 from .models import ForsalePortlet
 from .models import FeaturedPortlet
 from .models import LatestPortlet
+from .models import LatestAllPortlet
 
 try:
     from .models import TopsellerPortletAll
