@@ -8,14 +8,17 @@
 
 {% block section %}customer-login{% endblock %}
 
-{% block breadcrumbs %}
-    {% breadcrumbs _("Login") %}
-{% endblock %}
+
 
 {% block wrapper %}
-    <h1>
-        {% trans 'Please select!' %}
-    </h1>
+<div class="container">
+<div class="col-xl-2 col-md-2 col-xs-12 pal"></div>
+<div class="col-xl-10 col-md-10 col-xs-12">
+
+<ol class="breadcrumb pt2xl mtl hidden-xs">
+    {% breadcrumbs _("Login") %}
+</ol>
+   
 
     <div class="login">
         <h2 class="authenticate">{% trans 'Login' %}</h2>
@@ -86,5 +89,7 @@
 <script type="text/javascript">
 $("#id_username").focus();
 </script>
+</div>
+</div>
 {% endblock %}
 
