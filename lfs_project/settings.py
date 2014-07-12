@@ -174,7 +174,8 @@ INSTALLED_APPS = (
     'paintstore',
     'image_cropping',
     'easy_thumbnails',
-    'lfs_project.django_carousel',    
+    'lfs_project.django_carousel', 
+    'widget_tweaks',
 )
 
 if not DEBUG:

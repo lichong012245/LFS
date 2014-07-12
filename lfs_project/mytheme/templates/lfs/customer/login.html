@@ -1,6 +1,7 @@
 {% extends "lfs/base.html" %}
 {% load i18n %}
 {% load lfs_tags %}
+{% load widget_tweaks %}
 
 {% block title %}
     {% trans 'Login' %} - {{ block.super }}
@@ -13,6 +14,7 @@
 {% block wrapper %}
 <div class="container">
 <div class="col-xl-2 col-md-2 col-xs-12 pal"></div>
+
 <div class="col-xl-10 col-md-10 col-xs-12">
 
 <ol class="breadcrumb pt2xl mtl hidden-xs">
@@ -20,29 +22,59 @@
 </ol>
    
 
-    <div class="login">
-        <h2 class="authenticate">{% trans 'Login' %}</h2>
-
-        <div class="description">
-            {% trans 'If you are already customer you can login. Your address data will be stored in your account.' %}
-        </div>
-
+    <div class="col-xl-6 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1 pt2xl">
+        <h4>{% trans 'Login' %}</h4>
+        
+      
         <form class="authenticate"
               action="{% url lfs_login %}"
               method="post">
             {% csrf_token %}
 
-            <div class="form">
-                <table>
-                    {{ login_form }}
-                    <tr>
-                        <td></td>
-                        <td>
-                            <a href="{% url lfs_password_reset %}">{% trans 'Forgot password?' %}</a>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+            
+                
+                    
+                    
+                    {% if login_form.username.errors %}
+                    <div class="form-group col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt2xl has-error">
+                     <label for="inputSingupEmailAddress">Username</label>   
+                    {% render_field login_form.username type="text" class="form-control" id="inputLoginEmailAddress" placeholder="Enter Username" %} 
+                      {% for error in login_form.username.errors %}                      
+                        <p class="small text-danger">
+                        {{ error }}
+                        </p>
+                    </div>
+                      {% endfor %}
+                      {% else %}
+                    <div class="form-group col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt2xl">
+                     <label for="inputSingupEmailAddress">Username</label>   
+                    {% render_field login_form.username type="text" class="form-control" id="inputLoginEmailAddress" placeholder="Enter Username" %} 
+                    </div>
+                      {% endif %}
+                   
+                      <div class="clearfix"></div>
+
+                     
+                    {% if login_form.password.errors %}
+                    <div class="form-group col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 has-error">
+                      <label for="inputLoginPassword">Password</label>   
+                    {% render_field login_form.password type="password" class="form-control" id="inputLoginPassword" placeholder="Enter Password" %}
+                      {% for error in login_form.password.errors %}                      
+                        <p class="small text-danger">
+                        {{ error }}
+                        </p>
+                      {% endfor %}
+                  </div>
+                  {% else %}
+                  <div class="form-group col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12">
+                      <label for="inputLoginPassword">Password</label>   
+                    {% render_field login_form.password type="password" class="form-control" id="inputLoginPassword" placeholder="Enter Password" %}
+                </div>
+                      {% endif %}
+                   
+                    <div class="clearfix"></div>            
+                  
+         
 
             <input type="hidden"
                    name="action"
@@ -52,27 +84,79 @@
                    name="next"
                    value="{{ next_url }}" />
 
+            
             <button type="submit"
-                    class="button login-button emphasized left">{% trans 'Login' %}</button>
+                    class="btn btn-info btn-lg">{% trans 'Login' %}</button>
+            <div class="clearfix"></div>
+                    <p class="mtxl mb2xl"><a href="{% url lfs_password_reset %}" role="button" data-toggle="modal">{% trans 'Forgot password?' %}</a></p>
         </form>
     </div>
 
     {% if not ANON_ONLY %}
-        <div class="register">
-            <h2 class="authenticate">{% trans 'Register' %}</h2>
-
-            <div class="description">
-                {% trans 'If you are not already a customer you can register in order to store your address data and to follow the state of your orders.' %}
-            </div>
+   <div class="col-xl-6 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1 pt2xl">
+       <h4 class="authenticate">{% trans 'Register' %}</h4>
 
             <form action="{% url lfs_login %}"
                   method="post">
                     {% csrf_token %}
-                    <div class="form">
-                        <table>
-                            {{ register_form }}
-                        </table>
+
+                    {% if register_form.email.errors %}
+                    <div class="form-group col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt2xl has-error">
+                     <label for="inputSingupEmailAddress">Email</label>   
+                    {% render_field register_form.email type="text" class="form-control" id="inputSingupEmailAddress" placeholder="Email Address" %} 
+                      {% for error in register_form.email.errors %}                      
+                        <p class="small text-danger">
+                        {{ error }}
+                        </p>
                     </div>
+                      {% endfor %}
+                      {% else %}
+                    <div class="form-group col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt2xl">
+                     <label for="inputSingupEmailAddress">Email</label>   
+                    {% render_field register_form.email type="text" class="form-control" id="inputSingupEmailAddress" placeholder="Email Address" %} 
+                    </div>
+                      {% endif %}
+
+                    <div class="clearfix"></div>
+
+                    {% if register_form.password_1.errors %}
+                    <div class="form-group col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt2xl has-error">
+                     <label for="inputSignupPassword">Password</label>   
+                    {% render_field register_form.password_1 type="text" class="form-control" id="inputSignupPassword" placeholder="Enter Password" %} 
+                      {% for error in register_form.password_1.errors %}                      
+                        <p class="small text-danger">
+                        {{ error }}
+                        </p>
+                    </div>
+                      {% endfor %}
+                      {% else %}
+                    <div class="form-group col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt2xl">
+                     <label for="inputSignupPassword">Password</label>   
+                    {% render_field register_form.password_1 type="text" class="form-control" id="inputSignupPassword" placeholder="Enter Password" %} 
+                    </div>
+                      {% endif %}
+
+                    <div class="clearfix"></div>
+
+                    {% if register_form.password_2.errors %}
+                    <div class="form-group col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt2xl has-error">
+                     <label for="reinputSignupPassword">Confirm Password</label>   
+                    {% render_field register_form.password_2 type="text" class="form-control" id="reinputSignupPassword" placeholder="Enter Password" %} 
+                      {% for error in register_form.password_2.errors %}                      
+                        <p class="small text-danger">
+                        {{ error }}
+                        </p>
+                    </div>
+                      {% endfor %}
+                      {% else %}
+                    <div class="form-group col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt2xl">
+                     <label for="reinputSignupPassword">Confirm Password</label>   
+                    {% render_field register_form.password_2 type="text" class="form-control" id="reinputSignupPassword" placeholder="Enter Password" %} 
+                    </div>
+                      {% endif %}
+
+                      
+                    
                     <input type="hidden"
                            name="action"
                            value="register" />
@@ -80,15 +164,14 @@
                     <input type="hidden"
                            name="next"
                            value="{{ next_url }}" />
+                    <div class="clearfix"></div>
+                    <p class="form-group col-xl-12 col-xs-12 small"><a href="#">Terms of Service</a></p>       
 
                     <button type="submit"
-                            class="button register-button emphasized left">{% trans "Register" %}</button>
+                            class="btn btn-default btn-lg">{% trans "Register" %}</button>
             </form>
-        </div>
+  </div>
     {% endif %}
-<script type="text/javascript">
-$("#id_username").focus();
-</script>
 </div>
 </div>
 {% endblock %}
