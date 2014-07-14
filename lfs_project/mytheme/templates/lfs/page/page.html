@@ -17,20 +17,12 @@
 {% block section %}page{% endblock %}
 
 
-    {% block breadcrumbs %}
-    <div class="container">
-    <ol class="breadcrumb pt2xl mtl">
-    {% breadcrumbs page %}
-    </ol>
-    </div>
+    {% block breadcrumbs %}    
     {% endblock %}
 
 
 {% block content %}
-    
-    <div>
-        {{ page.body|safe }}
-    </div>
+   
 
 <div class="container">
     {% block page-newarrival-slot %}
@@ -39,9 +31,21 @@
 </div>
 
 <div class="container">
-   {% block page-topseller-slot %}
+    {% block page-topseller-slot %}
     {% lfs_portlet_slot 'page-topseller' %}
     {% endblock %}
+</div>
+
+<div class="container">
+   {% block featured-slot %}
+   {% lfs_portlet_slot 'featured' %}
+   {% endblock %}
+</div>
+
+<div class="container">
+   {% block onsale-slot %}
+   {% lfs_portlet_slot 'onsale' %}
+   {% endblock %}
 </div>
 
     {% if page.file %}

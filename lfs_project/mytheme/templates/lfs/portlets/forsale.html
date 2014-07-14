@@ -1,30 +1,46 @@
 {% load i18n %}
 {% load lfs_tags %}
 {% load thumbnail %}
+{% load pagination_tags %}
 
 {% if products %}
-   {# <div class="forsale-products-portlet portlet"> #}
+{% if not slideshow %}
+  <div class="col-xl-2 col-md-2 col-xs-12 pal"> 
+
+   </div>
+   <div class="col-xl-10 col-md-10 col-xs-12">    
         
-       {# <div class="portlet-body"> #}
-            {% if not slideshow %}
-                {% for product in products %}
-                <div class="portlet-item {% if forloop.last %}last{% endif %}">
-                    <a href="{{ product.get_absolute_url }}">
-                        {{ product.get_name }}
-                    </a>
-                    <div class="product-price">
-                        <span class="for-sale-standard-price">{{ product|get_standard_price:request|currency:request}}*</span>
-                        <span class="for-sale-price">{{ product.for_sale_price|currency:request}}*</span>
-                        <div class="price-disclaimer">
-                            {% if product.price_includes_tax %}
-                                {% trans '*inc. VAT' %}
-                            {% else  %}
-                                {% trans '*exc. VAT' %}
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
+       <ol class="breadcrumb pt2xl mtl">{% breadcrumbs 'On Sale' %}
+        </ol>
+
+        
+
+        {% if not paginator %}
+        {% autopaginate products 12 %}
+        {% endif %}
+        
+        
+
+        {% for product in products %}
+        <div class="col-xl-4 col-md-4 col-sm-4 col-xs-6 pal">
+            <a class="wrap-product" href="{{ product.get_absolute_url }}">
+               <div class="paxl"><div class="pa2xl"></div></div>
+               <img class="img-responsive" src="{% thumbnail product.get_image.image 550x648 crop='0,0' %}" />
+               <p class="product-name pal plxl prxl mtxl">{{ product.get_name }}</p>                    
+
+               {% if product.for_sale %}
+               <p class="price-before-sale small pal">{{ product|get_for_sale_price:request|currency:request }}{% if product.get_price_unit %}/ {{ product.get_price_unit }}{% endif %}</p>
+               <p class="price pal pb2xl">{{ product.get_standard_price|currency:request }}{% if product.get_price_unit %}/ {{ product.get_price_unit }}{% endif %}</p>
+               {% else %}
+               <p class="price pal pb2xl">{{ product|get_price:request|currency:request }}{% if product.get_price_unit %}/ {{ product.get_price_unit }}{% endif %}</p>                         {% endif %}
+
+           </a>
+        </div>
+       {% endfor %}
+
+       {% paginate %}
+       
+   </div>  
             {% else %}
             <div class="products-wrapper slideshow">
                 {% for product in products %}
