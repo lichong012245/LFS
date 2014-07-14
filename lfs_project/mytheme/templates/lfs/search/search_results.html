@@ -36,10 +36,11 @@
                <p class="product-name pal plxl prxl mtxl">{{ product.get_name }}</p>                    
 
                {% if product.for_sale %}
-               <p class="price-before-sale small pal">{{ product|get_for_sale_price:request|currency:request }}{% if product.get_price_unit %}/ {{ product.get_price_unit }}{% endif %}</p>
-               <p class="price pal pb2xl">{{ product.get_standard_price|currency:request }}{% if product.get_price_unit %}/ {{ product.get_price_unit }}{% endif %}</p>
-               {% else %}
-               <p class="price pal pb2xl">{{ product|get_price:request|currency:request }}{% if product.get_price_unit %}/ {{ product.get_price_unit }}{% endif %}</p>                         {% endif %}
+                        <p class="price-before-sale small pal">USD {{ product.price }} / {{ product.price_unit }}</p>
+                        <p class="price pal pb2xl">USD {{ product.for_sale_price }} / {{ product.price_unit }}</p>
+                        {% else %}
+                        <p class="price pal pb2xl">USD {{ product.price }} / {{ product.price_unit }}</p>
+                        {% endif %}
 
            </a>
         </div>
