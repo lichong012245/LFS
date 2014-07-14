@@ -175,18 +175,29 @@
    </div>
 </div> <!-- // container / carousel section -->
 
-<div class="container">
+{% block category-slot %}             
+{% endblock %}
 
-   {% block category-slot %}             
+<div class="container">  
+
+   {% block featured-slot %}   
    {% endblock %}
 
-   {% block featured-slot %}
-   {% lfs_portlet_slot 'featured' %}
+   {% block onsale-slot %}   
    {% endblock %}
 
-   {% block onsale-slot %}
-   {% lfs_portlet_slot 'onsale' %}
-   {% endblock %}
+   <div class="col-xl-6 col-sm-6 col-xs-12 pal">
+                <a class="wrap-banner" href="/page/featured">
+                    <div class="paxl"><div class="pa2xl"></div></div>
+                    <img class="img-responsive" src="{{ STATIC_URL }}momo/images/ad/ad_1.jpg" />
+                </a>
+            </div>
+            <div class="col-xl-6 col-sm-6 col-xs-12 pal">
+                <a class="wrap-banner" href="/page/forsale">
+                    <div class="paxl"><div class="pa2xl"></div></div>
+                    <img class="img-responsive" src="{{ STATIC_URL }}momo/images/ad/ad_2.jpg" />
+                </a>
+    </div>
 </div> <!-- // container / about section -->
 
 <div class="clearfix mt4xl hidden-sm hidden-xs"></div>
