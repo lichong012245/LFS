@@ -22,14 +22,19 @@
 {% endblock %}
 
 {% block breadcrumbs %}
-    {% breadcrumbs product %}
 {% endblock %}
 
 {% block content %}
+<div class="row text-center">
+<ol class="breadcrumb pt2xl mtl">
+    {% breadcrumbs product %}
+</ol>
+{% product_navigation product %}
+</div>
 
     {{ product.static_block.html|safe }}
 
-    {% product_navigation product %}
+    
 
     <div class="overview">
         {% current_category product %}
