@@ -1,18 +1,59 @@
-{% for field in form %}
-    <div class="field">
-        <div class="label">
-            {{ field.label_tag }}:
-        </div>
-        
-        {% if field.errors %}
-            <div class="error">
-                {{ field.errors }}
-                {{ field }}
-            </div>
-        {% else %}
-            <div>
-                {{ field }}
-            </div>
-        {% endif %}
-    </div>
-{% endfor %}
+{% load widget_tweaks %}
+
+
+                  {% if form.name.errors %}
+                    <div class="form-group col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt2xl has-error">
+                     <label for="inputSingupEmailAddress">Name</label>   
+                    {% render_field form.name type="text" class="form-control" id="inputLoginEmailAddress" placeholder="Enter Name" %} 
+                      {% for error in form.name.errors %}                      
+                        <p class="small text-danger">
+                        {{ error }}
+                        </p>
+                    </div>
+                      {% endfor %}
+                      {% else %}
+                    <div class="form-group col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt2xl">
+                     <label for="inputSingupEmailAddress">Name</label>   
+                    {% render_field form.name type="text" class="form-control" id="inputLoginEmailAddress" placeholder="Enter Name" %} 
+                    </div>
+                      {% endif %}
+                   
+                      <div class="clearfix"></div>
+
+                       {% if form.email.errors %}
+                    <div class="form-group col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt2xl has-error">
+                     <label for="inputSingupEmailAddress">Email</label>   
+                    {% render_field form.email type="text" class="form-control" id="inputLoginEmailAddress" placeholder="Enter Email" %} 
+                      {% for error in form.email.errors %}                      
+                        <p class="small text-danger">
+                        {{ error }}
+                        </p>
+                    </div>
+                      {% endfor %}
+                      {% else %}
+                    <div class="form-group col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt2xl">
+                     <label for="inputSingupEmailAddress">Email</label>   
+                    {% render_field form.email type="text" class="form-control" id="inputLoginEmailAddress" placeholder="Enter Email" %} 
+                    </div>
+                      {% endif %}
+                   
+                      <div class="clearfix"></div>
+
+                      {% if form.message.errors %}
+                    <div class="form-group col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt2xl has-error">
+                     <label for="inputSingupEmailAddress">Message</label>   
+                    {% render_field form.message type="textarea" class="form-control" id="inputLoginEmailAddress" placeholder="Enter Message" %} 
+                      {% for error in form.message.errors %}                      
+                        <p class="small text-danger">
+                        {{ error }}
+                        </p>
+                    </div>
+                      {% endfor %}
+                      {% else %}
+                    <div class="form-group col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt2xl">
+                     <label for="inputSingupEmailAddress">Message</label>   
+                    {% render_field form.message type="textarea" class="form-control" id="inputLoginEmailAddress" placeholder="Enter Message" %} 
+                    </div>
+                      {% endif %}
+                   
+                      <div class="clearfix"></div>

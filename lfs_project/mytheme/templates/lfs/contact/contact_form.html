@@ -9,12 +9,20 @@
 {% block section %}contact-form{% endblock %}
 
 {% block breadcrumbs %}
-    {% breadcrumbs _("Contact") %}
+
 {% endblock %}
 
 {% block content %}
+<div class="container">
+    <div class="col-xl-2 col-md-2 col-xs-12 pal"></div>
+            
+    <div class="col-xl-10 col-md-10 col-xs-12">
+<ol class="breadcrumb pt2xl mtl hidden-xs">
+    {% breadcrumbs _("Contact") %}
+</ol>
 
-    <h1 class="first-heading">{% trans 'Contact form' %}</h1>
+    <h4>{% trans 'Contact form' %}</h4>
+    <br/>
     <p class="message">
         {% trans 'Please leave us a message. We will answer as soon as possible.' %}
     </p>
@@ -24,11 +32,10 @@
 
         {% csrf_token %}
         {% include "lfs/shop/lfs_form.html" %}
-
-        <div class="buttons">
-            <button class="button emphasized left"
-                   type="submit">{% trans 'Send' %}</button>
-        </div>
+        
+        <button type="submit" class="btn btn-default btn-lg">{% trans "Submit" %}</button>
     </form>
+</div>
+</div>
 
 {% endblock %}
