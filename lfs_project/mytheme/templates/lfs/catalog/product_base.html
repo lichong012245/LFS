@@ -25,6 +25,7 @@
 {% endblock %}
 
 {% block content %}
+<div class="container"> 
 <div class="row text-center">
 <ol class="breadcrumb pt2xl mtl">
     {% breadcrumbs product %}
@@ -35,13 +36,8 @@
     {{ product.static_block.html|safe }}
 
     
-
-    <div class="overview">
-        {% current_category product %}
-        <a href="{{ current_category.get_absolute_url }}">
-           {% trans 'Back to overview' %}
-        </a>
-    </div>
+<br/>
+    
 
     <div id="product-inline">
         {{ product_inline|safe }}
@@ -76,5 +72,5 @@
     {% endif %}
 
     {% related_products_by_tags product %}
-
+</div>
 {% endblock %}
