@@ -6,6 +6,9 @@
 		},
 		{
 			"path": "/home/john/projects/momo_dev"
+		},
+		{
+			"path": "/home/john/virtualenvs/momo/lib/python2.7/site-packages/reviews"
 		}
 	]
 }
