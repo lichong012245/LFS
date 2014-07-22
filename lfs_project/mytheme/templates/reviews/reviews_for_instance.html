@@ -1,19 +1,40 @@
 {% load i18n %}
 {% load lfs_tags %}
 
-<div class="reviews">
-    <h1 class="section">{% trans 'Reviews' %}</h1>
+<div id="wrap-review" class="row mt5xl pa2xl">
+               <h3 class="pa2xl">Review</h3>
 
+    <div class="row">
     {% if reviews %}
         {% for review in reviews %}
-            <div class="review">
-                <ul class="star-rating small-star inline-rating">
-                    <li class="current-rating"
-                        style="width:{{review.score|multiply:10}}px">
-                        Currently 3/5 Stars
-                    </li>
-                </ul>
-        
+        <div class="row paxl maxl item-review">            
+                {% ifequal review.score 1.0 %}
+                  <div class="rated">
+                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span class="solid-star">☆</span>
+                    </div>
+                 {% endifequal %}
+                {% ifequal review.score 2.0 %}
+                 <div class="rated">
+                    <span>☆</span><span>☆</span><span>☆</span><span class="solid-star">☆</span><span class="solid-star">☆</span>
+                    </div>
+                    {% endifequal %}
+                {% ifequal review.score 3.0 %}
+                 <div class="rated">
+                    <span>☆</span><span>☆</span><span class="solid-star">☆</span><span class="solid-star">☆</span><span class="solid-star">☆</span>
+                    </div>
+                    {% endifequal %}
+                 {% ifequal review.score 4.0 %}
+                 <div class="rated">
+                    <span>☆</span><span class="solid-star">☆</span><span class="solid-star">☆</span><span class="solid-star">☆</span><span class="solid-star">☆</span>
+                 </div>
+                 {% endifequal %}
+                 {% ifequal review.score 5.0 %}
+                 <div class="rated">
+                    <span class="solid-star">☆</span><span class="solid-star">☆</span><span class="solid-star">☆</span><span class="solid-star">☆</span><span class="solid-star">☆</span>
+                    </div>
+                    {% endifequal %}
+                                
+                <p class="small ptl">
                 {% if review.email and review.name %}                    
                     <a href="mailto:{{review.email}}">{{review.name}}</a>,
                 {% else %}
@@ -23,25 +44,29 @@
                         {% trans 'Anonymous' %},
                     {% endif %}
                 {% endif %}
-                 {{ review.creation_date|date:"d. F Y" }}
-            </div>    
-            <div>        
+                 <span class="small">{{ review.creation_date|date:"d. F Y" }}</span>
+            </p>    
+            <p class="ptxl">      
                 {{ review.comment|linebreaks }}
-            </div>    
+            </p>
+        </div>    
         {% endfor %}
     {% else %}
-        <p>
+        <div class="row paxl maxl item-review">
+            <p class="ptxl">
             {% trans 'There are no ratings for this product. Be the first one!' %}
         </p>
+        </div>
     {% endif %} 
     {% if has_rated %}
-        <div>
-            {% trans 'You have already rated' %}
-        </div>
-    {% else %}
-        <div class="buttons">
+        <p class="ptxl">
+            <b>{% trans 'You have already rated this product' %}</b>
+        </p>
+    </div>
+    {% else %}        
+        <div class="row pa2xl">
             <a class="button left"
-               href="{% url reviews_add content_type_id content_id %}">{% trans 'Add review' %}</a>
+               href="{% url reviews_add content_type_id content_id %}"><button class="btn btn-default" data-toggle="modal" data-target="#reviewModal">Make Review</button></a>
         </div>
     {% endif %}
 </div>
