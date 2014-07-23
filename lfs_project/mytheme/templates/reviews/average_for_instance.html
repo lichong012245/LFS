@@ -1,13 +1,35 @@
 {% load lfs_tags %}
 
 {% if average %}
-    <div class="average-rating"
-         onclick="window.location='#reviews'">
-        <ul class="star-rating">
-            <li class="current-rating"
-                style="width:{{average|multiply:25}}px">
-                Currently 3/5 Stars
-            </li>
-        </ul>
-    </div>
+    
+    <div class="ptxl">
+                            <span class="rated">
+                                {% if review.score <= 1.0 %}
+                  <div class="rated">
+                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span class="solid-star">☆</span>
+                    </div>
+                 {% endif %}
+                {% if review.score <= 2.0 and review.score > 1.0 %}
+                 <div class="rated">
+                    <span>☆</span><span>☆</span><span>☆</span><span class="solid-star">☆</span><span class="solid-star">☆</span>
+                    </div>
+                    {% endif %}
+                {% if review.score <= 3.0 and review.score > 2.0 %}
+                 <div class="rated">
+                    <span>☆</span><span>☆</span><span class="solid-star">☆</span><span class="solid-star">☆</span><span class="solid-star">☆</span>
+                    </div>
+                    {% endif %}
+                 {% if review.score <= 4.0 and review.score > 3.0 %}
+                 <div class="rated">
+                    <span>☆</span><span class="solid-star">☆</span><span class="solid-star">☆</span><span class="solid-star">☆</span><span class="solid-star">☆</span>
+                 </div>
+                 {% endif %}
+                 {% if review.score <= 5.0 and review.score > 4.0 %}
+                 <div class="rated">
+                    <span class="solid-star">☆</span><span class="solid-star">☆</span><span class="solid-star">☆</span><span class="solid-star">☆</span><span class="solid-star">☆</span>
+                    </div>
+                    {% endif %}
+                            </span>
+                            <a href="#wrap-review" class="small btn-link">({{ amount }} customer reviews)</a>
+                        </div>
 {% endif %}
