@@ -35,11 +35,11 @@
                     {% endifequal %}
                                 
                 <p class="small ptl">
-                {% if review.email and review.name %}                    
+                {% if review.email and review.name and user.is_superuser %}                    
                     <a href="mailto:{{review.email}}">{{review.name}}</a>,
                 {% else %}
                     {% if review.name %}
-                        {{ review.name }},
+                        {{ review.name|title }},
                     {% else %}
                         {% trans 'Anonymous' %},
                     {% endif %}

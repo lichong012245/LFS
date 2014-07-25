@@ -6,6 +6,12 @@
 {% block right-slot-wrapper %}{% endblock %}
 
 {% block content %}
-    <h1>{% trans 'Review' %}</h1>
-    <p>{% trans 'You have already rated for this product.' %}</p>    
+       <div class="container">
+           <div class="col-xl-2 col-md-2 col-xs-12 pal"></div>
+           <div class="col-xl-10 col-md-10 col-xs-12">
+               <h2 class="pbxl">{% trans 'Review' %}</h2>
+               <br/>
+               <p>{% trans 'You have already rated for this product.' %}</p>  
+           </div>  
+       </div>
 {% endblock %}

@@ -11,7 +11,7 @@ TEMPLATE_DEBUG = DEBUG
 TESTING = False
 THUMBNAIL_DEBUG =True
 
-SWITCH = False
+SWITCH = True
 
 
 DEFAULT_FROM_EMAIL = 'your_email@domain.com'
@@ -182,7 +182,10 @@ if not DEBUG:
     INSTALLED_APPS +=('storages',)
 
 import sys
+import lfs_project.lfs.customer
+import lfs_project.portlet
 sys.modules['lfs.customer']=lfs_project.lfs.customer
+sys.modules['lfs.portlet']=lfs_project.portlet
 
 
 FORCE_SCRIPT_NAME=""

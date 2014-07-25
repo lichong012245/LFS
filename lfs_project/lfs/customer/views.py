@@ -61,7 +61,7 @@ def login(request, template_name="lfs/customer/login.html"):
         login_form.fields["username"].label = _(u"E-Mail")
 
         if login_form.is_valid():
-            redirect_to = request.POST.get("next")
+            redirect_to = request.POST.get("next") 
             # Light security check -- make sure redirect_to isn't garbage.
             if not redirect_to or '//' in redirect_to or ' ' in redirect_to:
                 redirect_to = reverse("lfs_shop_view")

@@ -4,14 +4,19 @@
 {% block section %}{% endblock %}
 
 {% block content %}
-    <h1>{% trans 'Thank you' %}</h1>
-
-    <ul>
+      <div class="container">
+           <div class="col-xl-2 col-md-2 col-xs-12 pal"></div>
+           <div class="col-xl-10 col-md-10 col-xs-12">
+               <h2 class="pbxl">{% trans 'Thank you' %}</h2>
+               <br/>
+               <ul>
         <li>
             <a href="{{ object.get_absolute_url }}">{% trans "Go to the reviewed product" %}</a>
         </li>
         <li>
             <a href="{% url lfs_shop_view %}">{% trans 'Go to Shop' %}</a>
         </li>
-    </ul>
+    </ul>  
+           </div>  
+       </div>    
 {% endblock %}

@@ -128,7 +128,7 @@
                 {% endif %}
 
                 {% if user.first_name %}
-                <a class="btn btn-info pull-right">{{ user.first_name }} {{user.last_name}}</a>
+                <a class="btn btn-info pull-right">{{ user.first_name|title }} {{ user.last_name|title }}</a>
                 {% else %}
                 <a class="btn btn-info pull-right">{{ user.username }}</a>
                 {% endif %} 
