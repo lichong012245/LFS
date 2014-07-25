@@ -78,10 +78,15 @@ def login(request, template_name="lfs/customer/login.html"):
 
             email = register_form.data.get("email")
             password = register_form.data.get("password_1")
+            first_name=register_form.data.get("first_name")
+            last_name=register_form.data.get("last_name")
 
             # Create user
             user = User.objects.create_user(
                 username=email, email=email, password=password)
+            user.first_name=first_name
+            user.last_name=last_name
+            user.save()
 
             # Create customer
             customer = customer_utils.get_or_create_customer(request)

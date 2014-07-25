@@ -119,6 +119,48 @@
 
                     <div class="clearfix"></div>
 
+
+                    {% if register_form.first_name.errors %}
+                    <div class="form-group col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt2xl has-error">
+                     <label for="inputSingupEmailAddress">First Name</label>   
+                    {% render_field register_form.first_name type="text" class="form-control" id="inputSingupEmailAddress" placeholder="First Name" %} 
+                      {% for error in register_form.first_name.errors %}                      
+                        <p class="small text-danger">
+                        {{ error }}
+                        </p>
+                    </div>
+                      {% endfor %}
+                      {% else %}
+                    <div class="form-group col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt2xl">
+                     <label for="inputSingupEmailAddress">First Name</label>   
+                    {% render_field register_form.first_name type="text" class="form-control" id="inputSingupEmailAddress" placeholder="First Name" %} 
+                    </div>
+                      {% endif %}
+
+                    <div class="clearfix"></div>
+
+
+                    {% if register_form.last_name.errors %}
+                    <div class="form-group col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt2xl has-error">
+                     <label for="inputSingupEmailAddress">Last Name</label>   
+                    {% render_field register_form.last_name type="text" class="form-control" id="inputSingupEmailAddress" placeholder="Last Name" %} 
+                      {% for error in register_form.last_name.errors %}                      
+                        <p class="small text-danger">
+                        {{ error }}
+                        </p>
+                    </div>
+                      {% endfor %}
+                      {% else %}
+                    <div class="form-group col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt2xl">
+                     <label for="inputSingupEmailAddress">Last Name</label>   
+                    {% render_field register_form.last_name type="text" class="form-control" id="inputSingupEmailAddress" placeholder="Last Name" %} 
+                    </div>
+                      {% endif %}
+
+                    <div class="clearfix"></div>
+
+
+
                     {% if register_form.password_1.errors %}
                     <div class="form-group col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt2xl has-error">
                      <label for="inputSignupPassword">Password</label>   

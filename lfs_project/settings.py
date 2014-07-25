@@ -116,7 +116,7 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (    
     "lfs_project.mytheme",
-    #"lfs_project.lfs.catalog",
+    "lfs_project.lfs.customer",
     'lfs_project.lfs.portlet',
     "lfstheme",
     "compressor",
@@ -155,7 +155,7 @@ INSTALLED_APPS = (
     'lfs.order',
     'lfs.page',
     'lfs.payment',
-    #'lfs.portlet',
+    'lfs.portlet',
     'lfs.search',
     'lfs.shipping',
     'lfs.supplier',
@@ -180,6 +180,10 @@ INSTALLED_APPS = (
 
 if not DEBUG:
     INSTALLED_APPS +=('storages',)
+
+import sys
+sys.modules['lfs.customer']=lfs_project.lfs.customer
+
 
 FORCE_SCRIPT_NAME=""
 LOGIN_URL = "/login/"

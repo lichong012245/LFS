@@ -40,6 +40,8 @@ class RegisterForm(forms.Form):
     """Form to register a customer.
     """
     email = forms.EmailField(label=_(u"E-mail"), max_length=30)
+    first_name=forms.CharField(label=_(u"First Name"), max_length=30)
+    last_name=forms.CharField(label=_(u"Last Name"),  max_length=30)
     password_1 = forms.CharField(
         label=_(u"Password"), widget=forms.PasswordInput(), max_length=20)
     password_2 = forms.CharField(
