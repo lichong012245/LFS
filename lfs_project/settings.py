@@ -116,9 +116,8 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (    
     "lfs_project.mytheme",
-    "lfs_project.lfs.customer",
-    'lfs_project.lfs.portlet',
-    "lfstheme",
+    "lfs_project.customer",
+    'lfs_project.portlet',    
     "compressor",
     "django.contrib.admin",
     'django.contrib.auth',
@@ -142,7 +141,7 @@ INSTALLED_APPS = (
     'lfs.catalog',
     'lfs.checkout',
     "lfs.criteria",
-    "lfs.customer",
+    #"lfs.customer",
     "lfs.discounts",
     "lfs.export",
     'lfs.gross_price',
@@ -155,7 +154,7 @@ INSTALLED_APPS = (
     'lfs.order',
     'lfs.page',
     'lfs.payment',
-    'lfs.portlet',
+    #'lfs.portlet',
     'lfs.search',
     'lfs.shipping',
     'lfs.supplier',
@@ -184,7 +183,7 @@ if not DEBUG:
 import sys
 import lfs_project.lfs.customer
 import lfs_project.portlet
-sys.modules['lfs.customer']=lfs_project.lfs.customer
+sys.modules['lfs.customer']=lfs_project.customer
 sys.modules['lfs.portlet']=lfs_project.portlet
 
 
