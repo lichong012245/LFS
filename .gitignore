@@ -16,3 +16,4 @@ local_settings.py
 *media/
 *build/
 *Emails/
+*lfs/
