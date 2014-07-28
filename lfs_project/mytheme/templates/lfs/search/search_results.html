@@ -27,9 +27,9 @@
         {% endif %}
         
         
-
+      <div class="row foo">
         {% for product in products %}
-        <div class="col-xl-4 col-md-4 col-sm-4 col-xs-6 pal">
+        <div class="eq-col-xl-4 eq-col-md-4 eq-col-sm-4 eq-col-xs-6 pal">
             <a class="wrap-product" href="{{ product.get_absolute_url }}">
                <div class="paxl"><div class="pa2xl"></div></div>
                <img class="img-responsive" src="{% thumbnail product.get_image.image 550x648 crop='0,0' %}" />
@@ -45,6 +45,7 @@
            </a>
         </div>
        {% endfor %}
+     </div>  
 
        {% paginate %}
        {% endif %}

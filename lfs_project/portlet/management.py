@@ -15,12 +15,9 @@ from .models import TopsellerPortlet
 from .models import ForsalePortlet
 from .models import FeaturedPortlet
 from .models import LatestPortlet
+from .models import TopsellerPortletAll
 from .models import LatestAllPortlet
 
-try:
-    from .models import TopsellerPortletAll
-except ImportError:
-    from lfs_project.portlet.models import TopsellerPortletAll
 
 # 3rd party imports
 import portlets
@@ -44,5 +41,6 @@ def register_lfs_portlets(sender, **kwargs):
         register_portlet(FeaturedPortlet, "Featured Products")
         register_portlet(LatestPortlet, "Latest Products")
         register_portlet(TopsellerPortletAll, "All Topseller")
+        register_portlet(LatestAllPortlet, "All Latest Products")
 
 post_syncdb.connect(register_lfs_portlets)

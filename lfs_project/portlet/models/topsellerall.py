@@ -45,7 +45,7 @@ class TopsellerPortletAll(Portlet):
         #         object, self.limit)
         topseller = self.get_topseller()
 
-        return render_to_string("lfs/portlets/topseller.html", RequestContext(request, {
+        return render_to_string("lfs/portlets/topseller_all.html", RequestContext(request, {
             "title": self.title,
             "topseller": topseller,
         }))

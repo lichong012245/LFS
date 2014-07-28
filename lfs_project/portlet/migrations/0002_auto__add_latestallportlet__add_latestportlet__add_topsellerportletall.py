@@ -8,139 +8,51 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'AverageRatingPortlet'
-        db.create_table('portlet_averageratingportlet', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=100, blank=True)),
-        ))
-        db.send_create_signal('portlet', ['AverageRatingPortlet'])
-
-        # Adding model 'CartPortlet'
-        db.create_table('portlet_cartportlet', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=100, blank=True)),
-        ))
-        db.send_create_signal('portlet', ['CartPortlet'])
-
-        # Adding model 'CategoriesPortlet'
-        db.create_table('portlet_categoriesportlet', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=100, blank=True)),
-            ('start_level', self.gf('django.db.models.fields.PositiveSmallIntegerField')(default=1)),
-            ('expand_level', self.gf('django.db.models.fields.PositiveSmallIntegerField')(default=1)),
-        ))
-        db.send_create_signal('portlet', ['CategoriesPortlet'])
-
-        # Adding model 'DeliveryTimePortlet'
-        db.create_table('portlet_deliverytimeportlet', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=100, blank=True)),
-        ))
-        db.send_create_signal('portlet', ['DeliveryTimePortlet'])
-
-        # Adding model 'PagesPortlet'
-        db.create_table('portlet_pagesportlet', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=100, blank=True)),
-        ))
-        db.send_create_signal('portlet', ['PagesPortlet'])
-
-        # Adding model 'RecentProductsPortlet'
-        db.create_table('portlet_recentproductsportlet', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=100, blank=True)),
-        ))
-        db.send_create_signal('portlet', ['RecentProductsPortlet'])
-
-        # Adding model 'RelatedProductsPortlet'
-        db.create_table('portlet_relatedproductsportlet', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=100, blank=True)),
-        ))
-        db.send_create_signal('portlet', ['RelatedProductsPortlet'])
-
-        # Adding model 'TextPortlet'
-        db.create_table('portlet_textportlet', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=100, blank=True)),
-            ('text', self.gf('django.db.models.fields.TextField')(blank=True)),
-        ))
-        db.send_create_signal('portlet', ['TextPortlet'])
-
-        # Adding model 'TopsellerPortlet'
-        db.create_table('portlet_topsellerportlet', (
+        # Adding model 'LatestAllPortlet'
+        db.create_table('portlet_latestallportlet', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('title', self.gf('django.db.models.fields.CharField')(max_length=100, blank=True)),
             ('limit', self.gf('django.db.models.fields.IntegerField')(default=5)),
+            ('current_category', self.gf('django.db.models.fields.BooleanField')(default=False)),
         ))
-        db.send_create_signal('portlet', ['TopsellerPortlet'])
+        db.send_create_signal('portlet', ['LatestAllPortlet'])
 
-        # Adding model 'FilterPortlet'
-        db.create_table('portlet_filterportlet', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=100, blank=True)),
-            ('show_product_filters', self.gf('django.db.models.fields.BooleanField')(default=True)),
-            ('show_price_filters', self.gf('django.db.models.fields.BooleanField')(default=True)),
-        ))
-        db.send_create_signal('portlet', ['FilterPortlet'])
-
-        # Adding model 'ForsalePortlet'
-        db.create_table('portlet_forsaleportlet', (
+        # Adding model 'LatestPortlet'
+        db.create_table('portlet_latestportlet', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('title', self.gf('django.db.models.fields.CharField')(max_length=100, blank=True)),
             ('limit', self.gf('django.db.models.fields.IntegerField')(default=5)),
             ('current_category', self.gf('django.db.models.fields.BooleanField')(default=False)),
             ('slideshow', self.gf('django.db.models.fields.BooleanField')(default=False)),
         ))
-        db.send_create_signal('portlet', ['ForsalePortlet'])
+        db.send_create_signal('portlet', ['LatestPortlet'])
 
-        # Adding model 'FeaturedPortlet'
-        db.create_table('portlet_featuredportlet', (
+        # Adding model 'TopsellerPortletAll'
+        db.create_table('portlet_topsellerportletall', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('title', self.gf('django.db.models.fields.CharField')(max_length=100, blank=True)),
-            ('limit', self.gf('django.db.models.fields.IntegerField')(default=5)),
-            ('current_category', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('slideshow', self.gf('django.db.models.fields.BooleanField')(default=False)),
+            ('limit', self.gf('django.db.models.fields.IntegerField')(default=100)),
         ))
-        db.send_create_signal('portlet', ['FeaturedPortlet'])
+        db.send_create_signal('portlet', ['TopsellerPortletAll'])
+
+        # Adding field 'FilterPortlet.show_manufacturer_filters'
+        db.add_column('portlet_filterportlet', 'show_manufacturer_filters',
+                      self.gf('django.db.models.fields.BooleanField')(default=False),
+                      keep_default=False)
 
 
     def backwards(self, orm):
-        # Deleting model 'AverageRatingPortlet'
-        db.delete_table('portlet_averageratingportlet')
+        # Deleting model 'LatestAllPortlet'
+        db.delete_table('portlet_latestallportlet')
 
-        # Deleting model 'CartPortlet'
-        db.delete_table('portlet_cartportlet')
+        # Deleting model 'LatestPortlet'
+        db.delete_table('portlet_latestportlet')
 
-        # Deleting model 'CategoriesPortlet'
-        db.delete_table('portlet_categoriesportlet')
+        # Deleting model 'TopsellerPortletAll'
+        db.delete_table('portlet_topsellerportletall')
 
-        # Deleting model 'DeliveryTimePortlet'
-        db.delete_table('portlet_deliverytimeportlet')
-
-        # Deleting model 'PagesPortlet'
-        db.delete_table('portlet_pagesportlet')
-
-        # Deleting model 'RecentProductsPortlet'
-        db.delete_table('portlet_recentproductsportlet')
-
-        # Deleting model 'RelatedProductsPortlet'
-        db.delete_table('portlet_relatedproductsportlet')
-
-        # Deleting model 'TextPortlet'
-        db.delete_table('portlet_textportlet')
-
-        # Deleting model 'TopsellerPortlet'
-        db.delete_table('portlet_topsellerportlet')
-
-        # Deleting model 'FilterPortlet'
-        db.delete_table('portlet_filterportlet')
-
-        # Deleting model 'ForsalePortlet'
-        db.delete_table('portlet_forsaleportlet')
-
-        # Deleting model 'FeaturedPortlet'
-        db.delete_table('portlet_featuredportlet')
+        # Deleting field 'FilterPortlet.show_manufacturer_filters'
+        db.delete_column('portlet_filterportlet', 'show_manufacturer_filters')
 
 
     models = {
@@ -177,12 +89,28 @@ class Migration(SchemaMigration):
         'portlet.filterportlet': {
             'Meta': {'object_name': 'FilterPortlet'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'show_manufacturer_filters': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'show_price_filters': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'show_product_filters': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '100', 'blank': 'True'})
         },
         'portlet.forsaleportlet': {
             'Meta': {'object_name': 'ForsalePortlet'},
+            'current_category': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'limit': ('django.db.models.fields.IntegerField', [], {'default': '5'}),
+            'slideshow': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'title': ('django.db.models.fields.CharField', [], {'max_length': '100', 'blank': 'True'})
+        },
+        'portlet.latestallportlet': {
+            'Meta': {'object_name': 'LatestAllPortlet'},
+            'current_category': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'limit': ('django.db.models.fields.IntegerField', [], {'default': '5'}),
+            'title': ('django.db.models.fields.CharField', [], {'max_length': '100', 'blank': 'True'})
+        },
+        'portlet.latestportlet': {
+            'Meta': {'object_name': 'LatestPortlet'},
             'current_category': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'limit': ('django.db.models.fields.IntegerField', [], {'default': '5'}),
@@ -214,6 +142,12 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'TopsellerPortlet'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'limit': ('django.db.models.fields.IntegerField', [], {'default': '5'}),
+            'title': ('django.db.models.fields.CharField', [], {'max_length': '100', 'blank': 'True'})
+        },
+        'portlet.topsellerportletall': {
+            'Meta': {'object_name': 'TopsellerPortletAll'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'limit': ('django.db.models.fields.IntegerField', [], {'default': '100'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '100', 'blank': 'True'})
         }
     }

@@ -54,7 +54,7 @@ class LatestAllPortlet(Portlet):
             else:
                 latest_products.append(product)
 
-        return render_to_string("lfs/portlets/latest.html", RequestContext(request, {
+        return render_to_string("lfs/portlets/latest_all.html", RequestContext(request, {
             "title": self.rendered_title,
             "slideshow": self.slideshow,
             "products": latest_products

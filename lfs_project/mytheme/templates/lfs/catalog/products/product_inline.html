@@ -316,8 +316,9 @@
                                    name="accessory-{{ product_accessory.accessory.id }}"/>
                         </td>
                         <td>
-                            <a href="{{ product_accessory.accessory.get_absolute_url }}">
-                                {{ product_accessory.accessory.get_name|truncatewords_html:5 }}
+                            <a href="{{ product_accessory.accessory.get_absolute_url }}">        
+                                <img src="{{product_accessory.accessory.get_image.image.url_60x60}}"></img>
+                           
                             </a>
                         </td>
                         <td class="number">
