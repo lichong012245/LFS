@@ -21,8 +21,8 @@ class LatestAllPortlet(Portlet):
 
     name = _("Latest products")
 
-    limit = models.IntegerField(_(u"Limit"), default=5)
-    current_category = models.BooleanField(_(u"Use current category"), default=False)
+    limit = models.IntegerField(_(u"Limit"), default=15)
+    #current_category = models.BooleanField(_(u"Use current category"), default=False)
     #slideshow = models.BooleanField(_(u"Slideshow"), default=False)
 
     @property
@@ -55,8 +55,7 @@ class LatestAllPortlet(Portlet):
                 latest_products.append(product)
 
         return render_to_string("lfs/portlets/latest_all.html", RequestContext(request, {
-            "title": self.rendered_title,
-            "slideshow": self.slideshow,
+            "title": self.rendered_title,            
             "products": latest_products
         }))
 

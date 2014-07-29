@@ -9,6 +9,9 @@
 		},
 		{
 			"path": "/home/john/virtualenvs/momo/lib/python2.7/site-packages/reviews"
+		},
+		{
+			"path": "/home/john/projects/django-page-cms"
 		}
 	]
 }
