@@ -3,18 +3,24 @@
 {% load lfs_tags %}
 
 {% block title %}
-    {% trans 'Cart' %} - {{ block.super }}
+{% trans 'Cart' %} - {{ block.super }}
 {% endblock %}
 
 {% block section %}cart{% endblock %}
 
-{% block breadcrumbs %}
-    {% breadcrumbs _('Cart') %}
-{% endblock %}
+
 
 {% block wrapper %}
+<div class="container"> 
+	<div class="row text-center hidden">
+		<ol class="breadcrumb pt2xl mtl">
+			{% breadcrumbs _('Cart') %}
+		</ol>
+	</div>
 
-    <div id="cart-inline">
-        {{cart_inline}}
-    </div>
+
+	<div id="cart-inline">
+		{{cart_inline}}
+	</div>
+</div>
 {% endblock %}

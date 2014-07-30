@@ -11,7 +11,7 @@ TEMPLATE_DEBUG = DEBUG
 TESTING = False
 THUMBNAIL_DEBUG =True
 
-SWITCH = False
+SWITCH = True
 
 
 DEFAULT_FROM_EMAIL = 'your_email@domain.com'
@@ -43,7 +43,7 @@ TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'zh_CN'
+LANGUAGE_CODE = 'en'
 
 SITE_ID = 1
 

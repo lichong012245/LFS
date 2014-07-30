@@ -53,11 +53,12 @@
         {% if for_sale %}
             <div>
                 <p class="price-before-sale">
-                        {{ product|get_for_sale_price_gross:request|currency:request }}
+                        {{ product|get_standard_price_gross:request|currency:request }}
                         {% if price_unit %}/ {{ price_unit }}{% endif %}
                 </p>  
                 <h1 class="ptl">
-                        {{ product|get_standard_price_gross:request|currency:request }}
+                        
+                        {{ product|get_for_sale_price_gross:request|currency:request }}
                         {% if price_unit %}/ {{ price_unit }}{% endif %}
                 </h1>                   
             </div>
