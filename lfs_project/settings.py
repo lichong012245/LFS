@@ -11,7 +11,7 @@ TEMPLATE_DEBUG = DEBUG
 TESTING = False
 THUMBNAIL_DEBUG =True
 
-SWITCH = True
+SWITCH = False
 
 
 DEFAULT_FROM_EMAIL = 'your_email@domain.com'
