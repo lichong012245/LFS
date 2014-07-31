@@ -99,12 +99,11 @@
     <script type="text/javascript" src="{{ STATIC_URL }}js/lfs.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}jquery/jquery.form.pack.js"></script>
     <script type="text/javascript">
-            $(function () {
-                 $('#productPicCarousel').carousel({
-                    pause: true,
-                    interval: false
-                });
-            })
+            $(document).ready(function(){
+        $(".star").click(function() {    
+            $("#id_score").val($(this).attr("value"));
+        });   
+    });     
     </script>
     <script type="text/javascript">   
     $("#star3.0").click(function() {      
