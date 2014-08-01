@@ -8,16 +8,21 @@
 
 {% block section %}my-orders{% endblock %}
 
-{% block breadcrumbs %}
-    {% breadcrumbs _("Order") %}
-{% endblock %}
+
 
 {% block content %}
-    <h1>{% trans 'Order number:' %} {{ current_order.number }}</h1>
+<ol class="breadcrumb pt2xl mtl">
+ {% breadcrumbs _("Order") %}
+</ol>
+    <h3>{% trans 'Order number:' %} {{ current_order.number }}</h3>
+    <br/>
+    <div class="clearfix"></div>
 
     <p class="site-actions">
-        <a href="{% url lfs_my_orders %}">{% trans "Back to overview" %}</a>
+        <a href="{% url lfs_my_orders %}"><button type="submit" class="btn btn-default btn-sm">{% trans "Back to overview" %}</button></a>
     </p>
+    <div class="clearfix"></div>
+    <br/>
 
     {% include "lfs/order/lfs_order_tmpl.html" %}
 {% endblock %}

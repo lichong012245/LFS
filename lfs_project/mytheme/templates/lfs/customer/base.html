@@ -3,29 +3,30 @@
 {% load lfs_tags %}
 
 {% block wrapper %}
-    <div class="span-5">
-        {% block left-slot %}
-            <h1>{% trans 'My account' %}</h1>
-            <ul class="navigation-body">
-                <li>
-                    <a href="{% url lfs_my_account %}">{% trans 'Overview' %}</a>
-                </li>
-                <li>
-                    <a href="{% url lfs_my_orders %}">{% trans 'Your orders' %}</a>
-                </li>
-                <li>
-                    <a href="{% url lfs_my_password %}">{% trans 'Change password' %}</a>
-                </li>
-                <li>
-                    <a href="{% url lfs_my_email %}">{% trans 'Change e-mail' %}</a>
-                </li>
-                <li>
-                    <a href="{% url lfs_my_addresses %}">{% trans 'Change addresses' %}</a>
-                </li>
+<div class="container">
+   <div class="col-xl-2 col-md-2 col-xs-12 pal">
+    <div class="product-list-nav">
+        <div class="dropdown">
+            
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                {% trans 'My Account' %}
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url lfs_my_account %}">Overview</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url lfs_my_orders %}">{% trans 'Your orders' %}</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url lfs_my_password %}">{% trans 'Change password' %}</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url lfs_my_email %}">{% trans 'Change e-mail' %}</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url lfs_my_addresses %}">{% trans 'Change addresses' %}</a></li>
             </ul>
-        {% endblock %}
+            
+        </div>
+        
     </div>
-    <div class="span-19 last">
-        {% block content %}{% endblock %}
-    </div>
+</div>
+<div class="col-xl-10 col-md-10 col-xs-12">
+    
+    {% block content %}{% endblock %}
+    
+</div>
 {% endblock %}

@@ -4,13 +4,16 @@
 
 {% block section %}my-account{% endblock %}
 
-{% block breadcrumbs %}
-    {% breadcrumbs _("Your Account") %}
-{% endblock %}
+
 
 {% block content %}
-<h1>{% trans "Welcome!" %}</h1>
+<ol class="breadcrumb pt2xl mtl">
+    {% breadcrumbs _("Your Account") %}
+</ol>
 
-{% trans "Welcome to your account. Here you can find your orders, you can change your addresses, email address and your password." %}
+<h3>{% trans "Welcome!" %}</h3>
+<br/>
+
+<p>{% trans "Welcome to your account. Here you can find your orders, you can change email address and your password." %}</p>
 
 {% endblock %}

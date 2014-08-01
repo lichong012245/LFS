@@ -8,12 +8,13 @@
 
 {% block section %}my-addresses{% endblock %}
 
-{% block breadcrumbs %}
-    {% breadcrumbs _("Change your addresses") %}
-{% endblock %}
+
 
 {% block content %}
-    <h1>{% trans 'Your addresses' %}</h1>
+<ol class="breadcrumb pt2xl mtl">
+    {% breadcrumbs _("Change your addresses") %}
+</ol>
+    <h3>{% trans 'Your addresses' %}</h3>
 
     {% if form.errors %}
         <div class="form-errors">

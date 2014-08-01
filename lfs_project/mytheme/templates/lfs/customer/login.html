@@ -38,7 +38,7 @@
                     {% if login_form.username.errors %}
                     <div class="form-group col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt2xl has-error">
                      <label for="inputSingupEmailAddress">Email</label>   
-                    {% render_field login_form.username type="text" class="form-control" id="inputLoginEmailAddress" placeholder="Enter Username" %} 
+                    {% render_field login_form.username type="text" class="form-control" id="inputLoginEmailAddress" placeholder="Enter Email" %} 
                       {% for error in login_form.username.errors %}                      
                         <p class="small text-danger">
                         {{ error }}
@@ -48,7 +48,7 @@
                       {% else %}
                     <div class="form-group col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt2xl">
                      <label for="inputSingupEmailAddress">Email</label>   
-                    {% render_field login_form.username type="text" class="form-control" id="inputLoginEmailAddress" placeholder="Enter Username" %} 
+                    {% render_field login_form.username type="text" class="form-control" id="inputLoginEmailAddress" placeholder="Enter Email" %} 
                     </div>
                       {% endif %}
                    

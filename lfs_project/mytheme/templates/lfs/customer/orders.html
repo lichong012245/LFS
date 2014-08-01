@@ -8,14 +8,18 @@
 
 {% block section %}my-addresses{% endblock %}
 
-{% block breadcrumbs %}
-    {% breadcrumbs _("Your orders") %}
-{% endblock %}
 
 {% block content %}
-    <h1>{% trans 'Your orders' %}</h1>
+<ol class="breadcrumb pt2xl mtl">
+    {% breadcrumbs _("Your orders") %}
+</ol>
+
+
+    <h3>{% trans 'Your orders' %}</h3>
+
 
     {% if not date_filter and not orders %}
+    <div class="clearfix"></div>
         <p>
             {% trans "You haven't any orders yet." %}
         </p>
@@ -30,13 +34,14 @@
                         <option value="{{ option.value }}" {% if option.selected %}selected="selected"{% endif %}>{% blocktrans count counter=option.value %}{{ counter }} month{% plural %}{{ counter }} months{% endblocktrans %}</option>
                     {% endfor %}
                 </select>
-                <input type="submit"
-                       value="{% trans 'Filter' %}">
+                <button type="submit" class="btn btn-default btn-sm">{% trans 'Filter' %}</button>
             </form>
         </div>
+        <div class="clearfix"></div>
 
-        <table class="order lfs-default">
-            <tr>
+        <table class="table table-hover">
+            <thead>
+            <tr class="text-center">
                 <th>
                     {% trans 'Number' %}
                 </th>
@@ -50,7 +55,9 @@
                     {% trans 'State' %}
                 </th>
             </tr>
+        </thead>
             {% for order in orders %}
+            <tbody>
                 <tr>
                     <td>
                         <a href="{% url lfs_my_order order.id %}">{{ order.number|default_if_none:"-" }}</a>
@@ -67,6 +74,7 @@
                         {{order.get_state_display}}
                     </td>
                 </tr>
+            </tbody>
             {% empty %}
                 <tr colspan="3">
                     <td>
