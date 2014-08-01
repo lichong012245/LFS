@@ -2,7 +2,12 @@
 from django.core.exceptions import ObjectDoesNotExist
 
 # lfs imports
-from lfs.customer.models import Customer, Address
+try:
+    from lfs.customer.models import Customer, Address
+except ImportError:
+    raise "Impost is problematic"
+
+
 import lfs.core.utils
 
 

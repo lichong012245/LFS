@@ -6,25 +6,32 @@
 {% block left-slot-wrapper %}{% endblock %}
 {% block right-slot-wrapper %}{% endblock %}
 
-{% block breadcrumbs %}
-    {% breadcrumbs _("Added to cart") %}
-{% endblock %}
 
 {% block wrapper %}
+<div class="container">    
+           <div class="row text-center hidden">
+                <ol class="breadcrumb pt2xl mtl">
+                    {% breadcrumbs _("Added to cart") %}
+                </ol> 
+           </div>
+<div class="row text-center pt3xl">
     {% if plural %}
-        <h1>{% trans 'This products have been added to cart' %}</h1>
+        <h2 class="pbxl">{% trans 'This products have been added to cart' %}</h2>
     {% else %}
-        <h1>{% trans 'This product has been added to cart' %}</h1>
+        <h2 class="pbxl">{% trans 'This product has been added to cart' %}</h2>
     {% endif %}
+</div>
+ <div class="row pal wrap-cart"> 
 
     <div id="cart-items">
         {{ cart_items }}
     </div>
-
+<table class="table table-hover">
     {% if product_accessories %}
         <h3>{% trans 'Accessories' %}</h3>
-        <table class="accessories lfs-default">
+        
             <tr>
+                <th></th>
                 <th>
                     {% trans 'Name' %}
                 </th>
@@ -41,10 +48,15 @@
             </tr>
             {% for product_accessory in product_accessories %}
                 <tr>
+                    <td>                       
+                        
+                            <img class="img-responsive hidden-xs" src="{{ product_accessory.accessory.get_image.image.url_60x60 }}"></img>
+                           
+                        
+                    </td>
                     <td>
-                        <a href="{{ product_accessory.accessory.get_absolute_url }}">
-                            {{ product_accessory.accessory.get_name }}
-                        </a>
+                    <a href="{{ product_accessory.accessory.get_absolute_url }}"> {{ product_accessory.accessory.get_name }}</a>
+                   
                     </td>
                     <td class="number">
                         {{ product_accessory.quantity|quantity }}
@@ -59,7 +71,7 @@
                         <a class="button add-accessory-link"
                            rel="nofollow"
                            href="{% url lfs_add_accessory_to_cart product_accessory.accessory.id product_accessory.quantity %}">
-                           {% trans 'Add' %}
+                           <button class="btn btn-info btn-sm pull-right mtxl">{% trans 'Add' %}</button>
                         </a>
                     </td>
                 </tr>
@@ -68,18 +80,21 @@
     {% endif %}
 
     <div class="buttons">
+        
         <a class="button checkout-button emphasized"
            href="{% url lfs_checkout_dispatcher %}">
-            {% trans 'Checkout' %}
+            <button class="btn btn-info btn-sm pull-right mtxl">{% trans 'Checkout' %}</button>
         </a>
         <a class="button cart-button"
            href="{% url lfs.cart.views.cart %}">
-            {% trans 'Go to cart' %}
+            <button class="btn btn-info btn-sm pull-right mtxl">{% trans 'Go to cart' %}</button>
         </a>
         <a class="button shopping-button"
            href="{{ shopping_url }}">
-            {% trans 'Go on shopping' %}
+            <button class="btn btn-info btn-sm pull-right mtxl">{% trans 'Go on shopping' %}</button>
         </a>
     </div>
+</div>
+</div>
 
 {% endblock %}

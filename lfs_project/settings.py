@@ -11,7 +11,7 @@ TEMPLATE_DEBUG = DEBUG
 TESTING = False
 THUMBNAIL_DEBUG =True
 
-SWITCH = False
+SWITCH = True
 
 
 DEFAULT_FROM_EMAIL = 'your_email@domain.com'
@@ -140,7 +140,7 @@ INSTALLED_APPS = (
     'lfs.checkout',
     "lfs.criteria",
     "lfs_project.customer",
-    #"lfs.customer",
+    "lfs.customer",
     "lfs.discounts",
     "lfs.export",
     'lfs.gross_price',
