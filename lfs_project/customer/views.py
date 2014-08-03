@@ -23,11 +23,11 @@ import lfs
 from lfs.checkout.settings import INVOICE_PREFIX, SHIPPING_PREFIX
 from lfs.core.settings import POSTAL_ADDRESS_L10N
 from lfs.core.models import Country
-from lfs.customer import utils as customer_utils
-from lfs.customer.forms import EmailForm
-from lfs.customer.forms import RegisterForm
-from lfs.customer.forms import AddressForm
-from lfs.customer.models import Address
+from lfs_project.customer import utils as customer_utils
+from lfs_project.customer.forms import EmailForm
+from lfs_project.customer.forms import RegisterForm
+from lfs_project.customer.forms import AddressForm
+from lfs_project.customer.models import Address
 from lfs.order.models import Order
 
 # other imports
@@ -215,7 +215,7 @@ def account(request, template_name="lfs/customer/account.html"):
 def addresses(request, template_name="lfs/customer/addresses.html"):
     """Provides a form to edit addresses and bank account.
     """
-    customer = lfs.customer.utils.get_customer(request)
+    customer = customer_utils.get_customer(request)
     shop = lfs.core.utils.get_default_shop(request)
 
     if request.method == "POST":

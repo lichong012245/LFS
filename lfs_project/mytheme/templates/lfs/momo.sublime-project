@@ -2,7 +2,7 @@
 	"folders":
 	[
 		{
-			"path": "/home/john/Downloads/140715_momo"
+			"path": "/home/john/Downloads/add_review_cart_checkout/momo copy"
 		},
 		{
 			"path": "/home/john/projects/momo_dev"
@@ -11,7 +11,13 @@
 			"path": "/home/john/virtualenvs/momo/lib/python2.7/site-packages/reviews"
 		},
 		{
+			"path": "/home/john/projects/lfc/lfc-installer"
+		},
+		{
 			"path": "/home/john/projects/django-page-cms"
+		},
+		{
+			"path": "/home/john/projects/fein"
 		}
 	]
 }

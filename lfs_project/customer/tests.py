@@ -6,11 +6,11 @@ from django.core.urlresolvers import reverse
 from django.core import mail
 
 # lfs imports
-from lfs.customer.models import Address
+from .models import Address
 from lfs.core.models import Country
 from lfs.core.models import Shop
-from lfs.customer.models import CreditCard
-from lfs.customer.models import Customer
+from lfs_project.customer.models import CreditCard
+from lfs_project.customer.models import Customer
 from lfs.shipping.models import ShippingMethod
 from lfs.tax.models import Tax
 from lfs.payment.models import PaymentMethod

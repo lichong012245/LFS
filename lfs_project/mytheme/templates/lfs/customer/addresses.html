@@ -11,10 +11,13 @@
 
 
 {% block content %}
+<div class="container">
+
+<div class="col-xl-10 col-md-10 col-xs-12">
 <ol class="breadcrumb pt2xl mtl">
     {% breadcrumbs _("Change your addresses") %}
 </ol>
-    <h3>{% trans 'Your addresses' %}</h3>
+
 
     {% if form.errors %}
         <div class="form-errors">
@@ -28,15 +31,18 @@
           invoice="{% url lfs_changed_invoice_country %}"
           shipping="{% url lfs_changed_shipping_country %}">
         {% csrf_token %}
-        <table class="lfs-default">
-            <tr>
-                <td>
-                    <h2>{% trans 'Invoice Address' %}</h2>
-                </td>
-                <td>
-                    <h2>{% trans 'Shipping Address' %}</h2>
-                </td>
+        <table class="table table-hover">
+            <thead>
+                <tr class="text-center">
+                <th>
+                    <p>{% trans 'Invoice Address:' %}</p>
+                </th>
+                <th>
+                    <p>{% trans 'Shipping Address:' %}</p>
+                </th>
             </tr>
+            </thead>
+            <tbody>
             <tr>
                 <td>
                     {{ invoice_address_inline|safe }}
@@ -46,12 +52,15 @@
                 </td>
             </tr>
             <tr>
+                <td></td>
                 <td>
-                    <input class="lfs-default"
-                           type="submit"
-                           value="{% trans 'Save addresses' %}">
+                    <button type="submit"
+                    class="btn btn-info btn-sm pull-right mtxl">{% trans 'Save addresses' %}</button>
                 </td>
             </tr>
+        </tbody>
         </table>
+        
     </form>
+</div>
 {% endblock %}

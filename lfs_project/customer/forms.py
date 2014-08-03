@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 # lfs imports
 from lfs.core.utils import get_default_shop
-from lfs.customer.models import BankAccount
+from lfs_project.customer.models import BankAccount
 
 
 class AddressForm(forms.Form):

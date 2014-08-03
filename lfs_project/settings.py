@@ -11,7 +11,7 @@ TEMPLATE_DEBUG = DEBUG
 TESTING = False
 THUMBNAIL_DEBUG =True
 
-SWITCH = True
+SWITCH = False
 
 
 DEFAULT_FROM_EMAIL = 'your_email@domain.com'
@@ -183,7 +183,10 @@ if not DEBUG:
 import sys
 import lfs_project.customer
 import lfs_project.portlet
+#import lfs_project.customer.utils
+
 sys.modules['lfs.customer']=lfs_project.customer
+#sys.modules['lfs.customer.utils']=lfs_project.customer.utils
 sys.modules['lfs.portlet']=lfs_project.portlet
 
 

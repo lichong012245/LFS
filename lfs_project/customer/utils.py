@@ -2,10 +2,8 @@
 from django.core.exceptions import ObjectDoesNotExist
 
 # lfs imports
-try:
-    from lfs.customer.models import Customer, Address
-except ImportError:
-    raise "Impost is problematic"
+from lfs_project.customer.models import Customer, Address
+
 
 
 import lfs.core.utils
@@ -54,13 +52,13 @@ def _get_customer(request):
     if user.is_authenticated():
         try:
             return Customer.objects.get(user=user)
-        except ObjectDoesNotExist:
+        except ObjectDoesNotExist or AttributeError:
             return None
     else:
         session_key = request.session.session_key
         try:
             return Customer.objects.get(session=session_key)
-        except ObjectDoesNotExist:
+        except ObjectDoesNotExist or AttributeError:
             return None
 
 
