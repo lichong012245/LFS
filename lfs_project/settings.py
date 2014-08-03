@@ -183,10 +183,10 @@ if not DEBUG:
 import sys
 import lfs_project.customer
 import lfs_project.portlet
-#import lfs_project.customer.utils
+import lfs_project.lfs_contact
 
 sys.modules['lfs.customer']=lfs_project.customer
-#sys.modules['lfs.customer.utils']=lfs_project.customer.utils
+sys.modules['lfs_contact']=lfs_project.lfs_contact
 sys.modules['lfs.portlet']=lfs_project.portlet
 
 
