@@ -290,16 +290,16 @@ nowrap="nowrap">
     <div class="col-xl-6 col-md-6 col-xs-12">
     </div>
     <div class="col-xl-6 col-md-6 col-xs-12">
-        <a class="button checkout-button emphasized"
+        <button class="btn btn-info btn-lg pull-right mtxl"><a
         href="{% url lfs_checkout_dispatcher %}">                           
-        <button class="btn btn-info btn-lg pull-right mtxl">
+        
            {% trans 'Checkout' %}
-       </button></a>
-       <a class="button shopping-button"
+       </a></button>
+      <button class="btn btn-info btn-lg pull-right mtxl"> <a
        href="{{ shopping_url }}">
-       <button class="btn btn-info btn-lg pull-right mtxl">
+       
         {% trans 'Go on shopping' %}
-    </button></a>
+    </a></button>
 </div>
 </div>
 </form>

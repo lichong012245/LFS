@@ -1,24 +1,19 @@
 {% load i18n lfs_tags %}
 
 {# Voucher #}
-<h2 class="padding-top-large">
-    {% trans "Voucher code" %}
-</h2>
-<input data="{% url lfs_check_voucher %}"
-       type="text"
-       id="voucher"
-       name="voucher"
-       value="{{ voucher_number }}"
-       size="30" />
+<div class="input-group">                
+      <input  data="{% url lfs_check_voucher_cart %}" value="{{ voucher_number }}" id="voucher"
+      name="voucher" style="max-width:500px" type="text" class="form-control" placeholder="Enter coupon code" placehold="Enter Redeem code Here">
 
-{% if voucher_number and voucher_message %}
-    <span class="voucher-message">
+      {% if voucher_number and voucher_message %}
+      <span class="voucher-message">
         {{ voucher_message }}
     </span>
-{% endif %}
+    {% endif %}
+</div>
+<br/>
 
-<h2>{% trans 'Your cart' %}</h2>
-<table class="lfs-default cart">
+<table class="table table-hover">
     <tr>
         <th colspan="2">
             {% trans 'Product' %}
@@ -31,7 +26,7 @@
             {% trans 'Net Price' %}
         </th>
         <th class="number">
-            {% trans 'VAT' %}
+            {% trans 'Tax' %}
         </th>
         <th class="number">
             {% trans 'Total' %}
@@ -177,17 +172,21 @@
     </tr>
 
     <tr>
-        <td colspan="7"
-            class="total number padding-top">
-            <span class="total-label">{% trans 'Total' %}:</span>
-            {{ cart_price|currency:request}}
-        </td>
-    </tr>
-    <tr>
-        <td colspan="7"
+        <tr>
+        <td colspan="6"
             class="discreet number">
-            <span class="total-label">{% trans 'Inclusive VAT' %}:</span>
-            {{ cart_tax|currency:request}}
+            <span class="total-label">{% trans 'Tax' %}:</span>
+            
         </td>
+        <td>{{ cart_tax|currency:request}}</td>
     </tr>
+
+        <td colspan="6"
+            class="total number padding-top">
+            <span class="total-label">{% trans 'Grand Total' %}:</span>
+            
+        </td>
+        <td>{{ cart_price|currency:request}}</td>
+    </tr>
+
 </table>

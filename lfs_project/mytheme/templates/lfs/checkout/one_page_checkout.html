@@ -2,270 +2,241 @@
 {% load i18n lfs_tags %}
 
 {% block title %}
-    {% trans 'Checkout' %} - {{ block.super }}
+{% trans 'Checkout' %} - {{ block.super }}
 {% endblock %}
 
 {% block section %}checkout{% endblock %}
 
-{% block breadcrumbs %}
-    {% breadcrumbs _("Checkout") %}
-{% endblock %}
 
 {% block wrapper %}
-    {% if form.errors %}
-        <div class="form-errors">
-            {% trans "The operation could not be performed because one or more errors occurred. Please see below." %}
+<div class="container">    
+   <div class="row text-center hidden">
+    <ol class="breadcrumb pt2xl mtl">
+        {% breadcrumbs _("Checkout") %}
+    </ol> 
+</div>
+<div class="row text-center pt3xl">
+   <h2 class="pbxl">Check Out</h3>
+   </div>
+   {% if form.errors %}
+   <div class="form-errors">
+    <font size="3" color="red"><b>{% trans "The operation could not be performed because one or more errors occurred. Please see below." %}</b></font>
+</div>
+{% endif %}
+<div>
+    <form class="checkout-form postal-address"
+    method="post"
+    data="{% url lfs_changed_checkout %}"
+    invoice="{% url lfs_changed_invoice_country %}"
+    shipping="{% url lfs_changed_shipping_country %}">
+    {% csrf_token %}
+    <div class="panel panel-default">
+        <div class="panel-heading">Enter your address</div>
+        <div class="panel-body">
+         <div class="col-xl-6 col-sm-6 col-xs-12 pal">
+            <h4>{% trans 'Invoice address' %}</h4>
+            {{ invoice_address_inline|safe }}
         </div>
-    {% endif %}
-    <div>
-        <form class="checkout-form postal-address"
-              method="post"
-              data="{% url lfs_changed_checkout %}"
-              invoice="{% url lfs_changed_invoice_country %}"
-              shipping="{% url lfs_changed_shipping_country %}">
-            {% csrf_token %}
-            <table class="lfs-default">
-                <tr>
-                    <th>
-                        {% trans 'Invoice address' %}
-                    </th>
-                    <th>
-                        {% trans 'Shipping address' %}
-                        ({{ form.no_shipping }}
-                        {{ form.no_shipping.label_tag }})
-                    </th>
-                </tr>
-                <tr>
-                	{# Invoice Address #}
-                    <td width="50%">
-                    	{{ invoice_address_inline|safe }}
-                    </td>
-
-                    {#  Shipping Address #}
-                    <td width="50%">
-                    	{{ shipping_address_inline|safe }}
-                    </td>
-                </tr>
-            </table>
-
-            {# Shipping #}
-            <div class="shipping">
-                <h2>{% trans 'Shipping' %}</h2>
-                <div id="shipping-inline">
-                    {{ shipping_inline|safe }}
-                </div>
-            </div>
-
-            {# Payment #}
-            <div class="payment">
-                <div id="payment-inline">
-                    {{ payment_inline|safe }}
-                </div>
-            </div>
-
-            {% if display_credit_card %}
-                 <table id="credit-card">
-                     <tr>
-                         <th colspan="2">
-                             {% trans 'Please enter your credit card information' %}
-
-                            {% if form.errors.credit_card %}
-                                <ul class="errorlist">
-                                    <li>{{ form.errors.credit_card }}</li>
-                                </ul>
-                            {% endif %}
-
-                             <noscript>
-                                 <div class="discreet">
-                                     ({% trans 'Only necessary when the payment method is direct debit' %})
-                                 </div>
-                             </noscript>
-                         </th>
-                    </tr>
-                     <tr>
-                         <td class="label"
-                             colspan="2">
-                             {{ form.account_number.errors }}
-                         </td>
-                     </tr>
-                     <tr>
-                         <td class="label">
-                             {{ form.credit_card_type.label_tag }}:
-                         </td>
-                         <td>
-                             {{ form.credit_card_type }}
-                         </td>
-                     </tr>
-                     <tr>
-                         <td class="label"
-                             colspan="2">
-                             {{ form.credit_card_owner.errors }}
-                         </td>
-                     </tr>
-                     <tr>
-                         <td class="label">
-                             {{ form.credit_card_owner.label_tag }}:
-                         </td>
-                         <td>
-                             {{ form.credit_card_owner }}
-                         </td>
-                     </tr>
-
-                     <tr>
-                         <td class="label"
-                             colspan="2">
-                             {{ form.credit_card_number.errors }}
-                         </td>
-                     </tr>
-                     <tr>
-                         <td class="label">
-                             {{ form.credit_card_number.label_tag }}:
-                         </td>
-                         <td>
-                             {{ form.credit_card_number }}
-                         </td>
-                     </tr>
-
-                     <tr>
-                         <td class="label">
-                             <label>{% trans "Expiration date" %}:</label>
-                         </td>
-                         <td>
-                             {{ form.credit_card_expiration_date_month }} {{ form.credit_card_expiration_date_year }}
-                         </td>
-                     </tr>
-
-                     <tr>
-                         <td class="label"
-                             colspan="2">
-                             {{ form.credit_card_verification.errors }}
-                         </td>
-                     </tr>
-                     <tr>
-                         <td class="label">
-                             {{ form.credit_card_verification.label_tag }}:
-                         </td>
-                         <td>
-                             {{ form.credit_card_verification }}
-                         </td>
-                     </tr>
-
-                </table>
-            {% endif %}
-            {% if display_bank_account %}
-                <table id="bank-account">
-                    <tr>
-                        <th colspan="2">
-                            {% trans 'Please enter your bank information' %}
-                            <noscript>
-                                <div class="discreet">
-                                    ({% trans 'Only necessary when the payment method is direct debit' %})
-                                </div>
-                            </noscript>
-                        </th>
-                    </tr>
-                    <tr>
-                        <td class="label"
-                            colspan="2">
-                            {{ form.account_number.errors }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="label">
-                            {{ form.account_number.label_tag }}:
-                        </td>
-                        <td>
-                            {{ form.account_number }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="label"
-                            colspan="2">
-                            {{ form.bank_identification_code.errors }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="label">
-                            {{ form.bank_identification_code.label_tag }}:
-                        </td>
-                        <td>
-                            {{ form.bank_identification_code }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="label"
-                            colspan="2">
-                            {{ form.bank_name.errors }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="label">
-                            {{ form.bank_name.label_tag }}:
-                        </td>
-                        <td>
-                            {{ form.bank_name }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="label"
-                            colspan="2">
-                            {{ form.depositor.errors }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="label">
-                            {{ form.depositor.label_tag }}:
-                        </td>
-                        <td>
-                            {{ form.depositor }}
-                        </td>
-                    </tr>
-                </table>
-            {% endif %}
-
-            {# Cart #}
-            <div id="cart-inline">
-                {{ cart_inline }}
-            </div>
-
-            {# Message #}
-            <div>
-                {{form.message.label_tag}}:
-            </div>
-            <div>
-                {{ form.message }}
-            </div>
-
-            {% if SHOP.confirm_toc %}
-                {% if form.errors.confirm_toc %}
-                    <ul class="errorlist">
-                        <li>{{ form.errors.confirm_toc }}</li>
-                    </ul>
-                {% endif %}
-
-                <input type="checkbox" name="confirm_toc" id="confirm_toc" />
-                <label for="confirm_toc">{% trans "Please confirm our terms and conditions" %}</label>
-            {% endif %}
-
-            <div class="right">
-                <button class="button emphasized"
-                        type="submit">
-                    {% trans 'Submit order' %}
-                </button>
-                <a class="button"
-                   href="{% url lfs.cart.views.cart %}">{% trans 'Go to cart' %}</a>
-            </div>
-
-            {% if request.user.is_anonymous %}
-                <input type="hidden"
-                       name="is_anonymous"
-                       value="1" />
-            {% else %}
-                <input type="hidden"
-                       name="is_anonymous"
-                       value="0" />
-            {% endif %}
-
-        </form>
+        <div class="col-xl-6 col-sm-6 col-xs-12 pal">
+            <h4>{% trans 'Shipping address' %}
+                ({{ form.no_shipping }}
+                {{ form.no_shipping.label_tag }})</h4>
+                {{ shipping_address_inline|safe }}
+            </div>             
+        </div>
     </div>
+
+    {# Shipping #}
+    <div class="row pal">
+     <div class="panel panel-default">
+        <div class="panel-heading">Select shipping option</div>
+        <div class="panel-body"> 
+
+
+
+            {{ shipping_inline|safe }}
+
+        </div>
+    </div>
+
+    {# Payment #}
+    <div class="row pal">
+     <div class="panel panel-default">
+        <div class="panel-heading">Select payment option</div>
+        <div class="panel-body">  
+            <div class="col-xl-4 col-sm-4 col-xs-12 pal">
+
+                {{ payment_inline|safe }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if display_credit_card %}
+<table id="credit-card" class="table table-hover">
+ <tr>
+     <th colspan="2">
+         {% trans 'Please enter your credit card information' %}
+
+         {% if form.errors.credit_card %}
+         <ul class="errorlist">
+            <li>{{ form.errors.credit_card }}</li>
+        </ul>
+        {% endif %}
+
+        <noscript>
+         <div class="discreet">
+             ({% trans 'Only necessary when the payment method is direct debit' %})
+         </div>
+     </noscript>
+ </th>
+</tr>
+
+<tr>
+ <td>
+     {{ form.credit_card_type.label_tag }}:
+ </td>
+ <td>{{ form.credit_card_type }}<b>{{ form.account_number.errors }}</b>
+ </td>
+</tr>
+
+<tr>
+ <td>
+     {{ form.credit_card_owner.label_tag }}:
+ </td>
+ <td>
+     {{ form.credit_card_owner }}<b>{{ form.credit_card_owner.errors }}</b>
+ </td>
+</tr>
+
+
+<tr>
+ <td>
+     {{ form.credit_card_number.label_tag }}:
+ </td>
+ <td>
+     {{ form.credit_card_number }}<b>{{ form.credit_card_number.errors }}</b>
+ </td>
+</tr>
+
+<tr>
+ <td>
+     <label>{% trans "Expiration date" %}:</label>
+ </td>
+ <td>
+     {{ form.credit_card_expiration_date_month }} {{ form.credit_card_expiration_date_year }}
+ </td>
+</tr>
+
+
+<tr>
+ <td>
+     {{ form.credit_card_verification.label_tag }}:
+ </td>
+ <td>
+     {{ form.credit_card_verification }}<b>{{ form.credit_card_verification.errors }}</b>
+ </td>
+</tr>
+
+</table>
+{% endif %}
+
+{% if display_bank_account %}
+<table id='bank-account' class="table table-hover">
+    <tr>
+        <th colspan="2">
+            {% trans 'Please enter your bank information' %}
+            <noscript>
+                <div class="discreet">
+                    ({% trans 'Only necessary when the payment method is direct debit' %})
+                </div>
+            </noscript>
+        </th>
+    </tr>
+    
+    <tr>
+        <td>
+            {{ form.account_number.label_tag }}:
+        </td>
+        <td>
+            {{ form.account_number }}<b>{{ form.account_number.errors }}</b>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            {{ form.bank_identification_code.label_tag }}:
+        </td>
+        <td>
+            {{ form.bank_identification_code }}<b>{{ form.bank_identification_code.errors }}</b>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            {{ form.bank_name.label_tag }}:
+        </td>
+        <td>
+            {{ form.bank_name }}<b> {{ form.bank_name.errors }}</b>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            {{ form.depositor.label_tag }}:
+        </td>
+        <td>
+            {{ form.depositor }}<b>{{ form.depositor.errors }}</b>
+        </td>
+    </tr>
+</table>
+{% endif %}
+
+{# Cart #}
+<div id="cart-inline">
+    {{ cart_inline }}
+</div>
+
+
+
+{% if SHOP.confirm_toc %}
+{% if form.errors.confirm_toc %}
+<ul class="errorlist">
+    <li>{{ form.errors.confirm_toc }}</li>
+</ul>
+{% endif %}
+
+<input type="checkbox" name="confirm_toc" id="confirm_toc" />
+<label for="confirm_toc">{% trans "Please confirm our terms and conditions" %}</label>
+{% endif %}
+
+<div class="row">
+    <div class="col-xl-6 col-md-6 col-xs-12">
+        <div>
+            
+        </div>
+
+    </div>
+    <div class="col-xl-6 col-md-6 col-xs-12">
+        <button type="submit" class="btn btn-info btn-lg pull-right mtxl">{% trans 'Submit order' %}</button>
+        <button class="btn btn-info btn-lg pull-right mtxl"><a class="button"
+        href="{% url lfs.cart.views.cart %}">{% trans 'Go to cart' %}</a></button>
+    </div>
+</div>
+
+
+{% if request.user.is_anonymous %}
+<input type="hidden"
+name="is_anonymous"
+value="1" />
+{% else %}
+<input type="hidden"
+name="is_anonymous"
+value="0" />
+{% endif %}
+
+</form>
+</div>
+</div>
+
 {% endblock %}
