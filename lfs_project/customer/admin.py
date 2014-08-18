@@ -5,9 +5,9 @@ from django.contrib import admin
 from lfs_project.customer.models import Customer
 
 
-# class CustomerAdmin(admin.ModelAdmin):
-#     """
-#     """
-#     pass
+class CustomerAdmin(admin.ModelAdmin):
+    """
+    """
+    pass
     
-# admin.site.register(Customer, CustomerAdmin)
+admin.site.register(Customer, CustomerAdmin)

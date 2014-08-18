@@ -140,7 +140,7 @@ INSTALLED_APPS = (
     'lfs.checkout',
     "lfs.criteria",
     "lfs_project.customer",
-    "lfs.customer",
+    #"lfs.customer",
     "lfs.discounts",
     "lfs.export",
     'lfs.gross_price',
