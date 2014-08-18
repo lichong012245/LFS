@@ -6,10 +6,10 @@ from django.utils.translation import gettext_lazy as _
 
 DIRNAME = os.path.dirname(__file__)
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 TESTING = False
-THUMBNAIL_DEBUG =True
+THUMBNAIL_DEBUG = False
 
 SWITCH = False
 
@@ -276,9 +276,10 @@ LFS_UNITS = [
     u"lfm",
     u"Package",
     u"Piece",
-    u"ge",
-    u"jian",
-    u"tiao",
+    u"个",
+    u"件",
+    u"条",
+    u"套",
 ]
 
 LFS_PRICE_UNITS = LFS_BASE_PRICE_UNITS = LFS_PACKING_UNITS = LFS_UNITS
