@@ -140,8 +140,8 @@ INSTALLED_APPS = (
     'lfs.catalog',
     'lfs.checkout',
     "lfs.criteria",
-    "lfs_project.customer",
-    #"lfs.customer",
+    #"lfs_project.customer",
+    "lfs.customer",
     "lfs.discounts",
     "lfs.export",
     'lfs.gross_price',
@@ -154,8 +154,8 @@ INSTALLED_APPS = (
     'lfs.order',
     'lfs.page',
     'lfs.payment',
-    'lfs_project.portlet',
-    #'lfs.portlet',
+    #'lfs_project.portlet',
+    'lfs.portlet',
     'lfs.search',
     'lfs.shipping',
     'lfs.supplier',
@@ -181,14 +181,14 @@ INSTALLED_APPS = (
 if not DEBUG:
     INSTALLED_APPS +=('storages',)
 
-import sys
-import lfs_project.customer
-import lfs_project.portlet
-import lfs_project.lfs_contact
+# import sys
+# import lfs_project.customer
+# import lfs_project.portlet
+# import lfs_project.lfs_contact
 
-sys.modules['lfs.customer']=lfs_project.customer
-sys.modules['lfs_contact']=lfs_project.lfs_contact
-sys.modules['lfs.portlet']=lfs_project.portlet
+# #sys.modules['lfs.customer']=lfs_project.customers
+# sys.modules['lfs_contact']=lfs_project.lfs_contact
+# sys.modules['lfs.portlet']=lfs_project.portlet
 
 
 FORCE_SCRIPT_NAME=""
@@ -367,7 +367,7 @@ if not SWITCH:
     AWS_QUERYSTRING_AUTH = False     # don't add complex authentication-related query parameters for requests
     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-    AWS_STORAGE_BUCKET_NAME = 'zentec-momo'
+    AWS_STORAGE_BUCKET_NAME = 'momoclothing'
     #S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
     #STATIC_URL = S3_URL    
     AWS_HEADERS = {
