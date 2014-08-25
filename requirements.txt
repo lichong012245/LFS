@@ -1,6 +1,6 @@
 Django==1.4.5
 Fabric==1.9.1
-psycopg2==2.5.1
+#psycopg2==2.5.1
 django-storages==1.1.8
 boto==2.25.0
 Pillow==2.4.0
@@ -36,4 +36,4 @@ sqlparse==0.1.11
 static==0.4
 static3==0.5
 wsgiref==0.1.2
--e git://github.com/lichong012245/django-lfs-0.7.8@60fd0de0ba17975f5457e10bafc8caf91f9b10cf#egg=django-lfs-0.7.8
+-e git://github.com/lichong012245/django-lfs-0.7.8@a131db144cd9d2e93e153b4aff80e42f5381e1da#egg=django-lfs-0.7.8
