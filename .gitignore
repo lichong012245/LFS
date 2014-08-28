@@ -13,7 +13,7 @@ local_settings.py
 *bin/
 *downloads/
 *sitestatic/
-*media/
+*lfs_proect/media/
 *build/
 *Emails/
 *lfs/
