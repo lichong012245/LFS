@@ -72,7 +72,7 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Make this unique, and don't share it with anybody.
 # Need to be changed when publish
-SECRET_KEY = '+0zsw5n@v7*rhl6r6ufqhoc6jlqq0f-u8c+gh(hjb+_jmg@rh6'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 
 
@@ -381,6 +381,9 @@ if not SWITCH:
     EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
+
+    PAYPAL_RECEIVER_EMAIL = os.environ['PAYPAL_RECEIVER_EMAIL']
+    PAYPAL_IDENTITY_TOKEN = os.environ['PAYPAL_IDENTITY_TOKEN']
 
 ## Django compressor for S3 Settings
 # if not DEBUG:
