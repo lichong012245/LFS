@@ -15,10 +15,10 @@ THUMBNAIL_DEBUG = False
 SWITCH = False
 
 
-DEFAULT_FROM_EMAIL = 'your_email@domain.com'
+DEFAULT_FROM_EMAIL = 'momo@momo-clothing.com'
 
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+     ('MoMo', 'momo@momo-clothing.com'),
 )
 
 MANAGERS = ADMINS
